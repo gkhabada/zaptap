@@ -21,9 +21,9 @@ export const redirectIfUnauthorized = () => {
   console.log(user.token);
   console.log(isAuthorized);
   if(!isAuthorized && !isLocalhost) {
-
-    let dev = (location.href.indexOf('dev') !== -1) ? 'dev.' : '';
-    location.href = '//' + dev + 'zaptap.ru';
+    return 'redirect';
+    // let dev = (location.href.indexOf('dev') !== -1) ? 'dev.' : '';
+    // location.href = '//' + dev + 'zaptap.ru';
   }
 };
 
@@ -88,7 +88,7 @@ export async function updateToken() {
 }
 
 function processUserData(data) {
- 
+
   const { user: userData, refresh_token, expires_in, token: tokenData } = data;
   user.data = userData;
   localStorage.setItem('user', JSON.stringify(userData));

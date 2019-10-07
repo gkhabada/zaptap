@@ -27,7 +27,8 @@
       .tour(@click="$emit('tour')") Тур по странице
       .chat-container(v-on:click="chatClick($event)")
         img.chat(src="../../assets/chat.svg")
-        p(id="online-chat-caption") Онлайн-чат
+        p Онлайн-чат
+      //  p(id="online-chat-caption") Онлайн-чат
       // .footer__links
         router-link.footer__links__item(to="/faq") FAQ
         router-link.footer__links__item(to="/support") Тех поддержка
@@ -69,17 +70,19 @@ export default {
   },
   methods: {
     chatClick: function(e) {
-      let bodyClassList = document.body.classList;
-      if (bodyClassList.contains("no-jdiv")) {
-        document.body.classList.remove("no-jdiv");
-        jivo_api.open();
-        document.getElementById("online-chat-caption").innerText = "Скрыть онлайн-чат";
-      }
-      else {
-        jivo_api.close();
-        document.body.classList.add("no-jdiv");
-        document.getElementById("online-chat-caption").innerText = "Онлайн-чат";
-      }
+      // let bodyClassList = document.body.classList;
+      // if (bodyClassList.contains("no-jdiv")) {
+      //   document.body.classList.remove("no-jdiv");
+      //   jivo_api.open();
+      //   document.getElementById("online-chat-caption").innerText = "Скрыть онлайн-чат";
+      // }
+      // else {
+      //   jivo_api.close();
+      //   document.body.classList.add("no-jdiv");
+      //   document.getElementById("online-chat-caption").innerText = "Онлайн-чат";
+      // }
+      Tawk_API.toggle();
+
     },
     toNum(number) {
       const result = Number(number);

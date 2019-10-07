@@ -4,6 +4,7 @@ import { user, redirectIfUnauthorized, userRoles } from './helpers/authorization
 
 Vue.use(Router);
 
+const Landing = () => import('@/pages/Landing/Landing');
 const BuyerRequest = () => import('@/pages/BuyerRequest/BuyerRequest');
 const BuyerAnswers = () => import('@/pages/BuyerAnswers/BuyerAnswers');
 const BuyerOrders = () => import('@/pages/BuyerOrders/BuyerOrders');
@@ -27,6 +28,12 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'Landing',
+      component: Landing,
+      // beforeEnter: AuthGuard,
+    },
+    {
+      path: '/buyer/request',
       name: 'BuyerRequest',
       component: BuyerRequest,
       // beforeEnter: AuthGuard,
@@ -98,7 +105,7 @@ const router = new Router({
     },
     {
       path: '*',
-      redirect: 'NotFound',
+      redirect: 'Landing',
     },
   ],
 });
@@ -125,12 +132,12 @@ router.beforeEach(async (to, from, next) => {
   else if(['BuyerRequest', 'BuyerAnswers', 'BuyerOrders'].includes(to.name) && !user.is_buyer) {
     console.log(to.name);
     console.log(user);
-    next({name: 'NotFound'}); return;
+    // next({name: 'Landing'}); return;
   }
   else if(['SellerStock', 'SellerRequests', 'SellerOrders'].includes(to.name) && !user.is_seller) {
     console.log(to.name);
     console.log(user);
-    next({name: 'NotFound'}); return;
+    // next({name: 'Landing'}); return;
   }
 
   next();

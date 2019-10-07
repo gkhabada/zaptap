@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+
+
+    .container {
+      background: white;
+      position: relative;
+      border: 1px solid #bbbbbb;
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 3px;
+      font-family: "Roboto", sans-serif;
+      box-sizing: border-box;
+    }
+
+    .input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      background: none;
+      padding: 0 16px;
+      color: #444444;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-family: "Roboto", sans-serif;
+    }
+
+    .counter {
+      position: absolute;
+      right: 9px;
+      top: 8px;
+      color: #b7b7b7;
+      font-size: 10px;
+      line-height: 7px;
+      height: 7px;
+    }
+
+    .disabled {
+      border-color: gainsboro;
+    }
+    .disabled .counter {
+      display: none;
+    }
+    .disabled .input {
+      color: #555555;
+      background-color: #f6f6f6;
+    }
+
+    .counterror {
+      border: 1px solid red;
+    }
+
+
+    .inputphone {
+      width: 100%;
+      height: 100%;
+      background: none;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      color: #292929;
+      font-size: 14px;
+    }
+
+    /* widget */
+	  .widget {
+      width: 100%;
+    }
+
+    .options {
+      height: 175px;
+      min-height: 175px;
+      width: 100%;
+      background: #fff;
+      position: relative;
+      padding: 20px 0 0 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+    @media screen and (max-width: 900px) {
+      .options {
+        height: auto;
+        margin-bottom: 10px;
+        padding: 0;
+        padding-top: 20px;
+        padding-left: 0.5%;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .options {
+        padding: 20px 0 0 20px;
+      }
+    }
+
+    .options-row {
+      display: flex;
+      flex-direction: row;
+      height: 41px;
+      margin-bottom: 5px;
+    }
+    @media screen and (max-width: 900px) {
+      .options-row {
+        flex-direction: column;
+        height: auto;
+        width: 95%;
+        margin-bottom: 0;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .options-row {
+        width: 100%;
+      }
+    }
+
+    .twice-row {
+      display: flex;
+      flex-direction: row;
+      height: 41px;
+      width: 100%;
+      margin-bottom: 3px;
+    }
+    @media screen and (max-width: 700px) {
+      .twice-row {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 0;
+      }
+    }
+
+    .once-row {
+      width: 50%;
+    }
+    @media screen and (max-width: 900px) {
+      .once-row {
+        width: 100.5%;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .once-row {
+        width: 100%;
+      }
+    }
+
+    .title {
+      font-family: "Fira Sans", sans-serif;
+      color: #2a313d;
+      font-size: 18px;
+      line-height: 18px;
+      position: relative;
+    }
+    @media screen and (max-width: 900px) {
+      .title {
+        padding-left: 20px;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .title {
+        padding: 0;
+      }
+    }
+
+    .options__container {
+      position: relative;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    @media screen and (max-width: 900px) {
+      .options__container {
+        align-items: center;
+      }
+    }
+
+    .dropdown {
+      width: 100%;
+    }
+    .dropdown[class$=top] {
+      z-index: 2;
+      top: 0px;
+    }
+    .dropdown[class$=bottom] {
+      top: 55px;
+      z-index: 1;
+    }
+    .dropdown[class*="--0--"], .dropdown[class*="--6--"] {
+      left: 0%;
+    }
+    .dropdown[class*="--1--"], .dropdown[class*="--7--"] {
+      left: 16.66%;
+    }
+    .dropdown[class*="--2--"], .dropdown[class*="--8--"] {
+      left: 33.32%;
+    }
+    .dropdown[class*="--3--"], .dropdown[class*="--9--"] {
+      left: 50%;
+    }
+    .dropdown[class*="--4--"], .dropdown[class*="--10--"] {
+      left: 66.66%;
+    }
+    .dropdown[class*="--5--"], .dropdown[class*="--11--"] {
+      left: 83.32%;
+    }
+    .dropdown.opened {
+      z-index: 3;
+    }
+    @media screen and (max-width: 900px) {
+      .dropdown {
+        width: 100%;
+        margin-bottom: 3px;
+      }
+    }
+
+    .parts {
+      background: #F6F6F6;
+      padding-left: 20px;
+      padding-top: 23px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .parts__container {
+      margin-top: 5px;
+      display: flex;
+    }
+
+    .footer {
+      height: 120px;
+      min-height: 120px;
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 21px;
+      box-sizing: border-box;
+    }
+
+    .footer__container {
+      display: flex;
+      justify-content: space-between;
+    }
+    @media screen and (max-width: 700px) {
+      .footer__container {
+        flex-direction: column;
+      }
+    }
+
+    .footer__input {
+      height: 42px;
+      width: 100%;
+      padding-right: 16px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+
+    .footer__button {
+      height: 42px;
+      width: 167px;
+      min-width: 167px;
+      line-height: 42px;
+      text-align: center;
+      background: #2e71f0;
+      border-bottom: 3px solid #2863d1;
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      border-radius: 3px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 700px) {
+      .footer__button {
+        align-self: center;
+      }
+    }
+    .footer__button.disabled {
+      background: #cecece;
+      border-color: #afafaf;
+      color: #818181;
+      cursor: not-allowed;
+    }
+
+    .last__line {
+      margin-left: 22px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    @media screen and (max-width: 900px) {
+      .last__line {
+        flex-direction: column;
+        margin-right: 5%;
+      }
+    }
+
+    .visible {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      justify-content: space-between;
+    }
+    @media screen and (max-width: 900px) {
+      .visible {
+        flex-direction: column;
+      }
+    }
+
+    .add__part {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #2e71f0;
+      font-weight: 500;
+      text-decoration: underline;
+      padding-left: 18px;
+      box-sizing: border-box;
+      height: 13px;
+      line-height: 13px;
+      background: url("../../assets/addpart.svg") no-repeat 0 center;
+      width: 29.84%;
+    }
+    @media screen and (max-width: 900px) {
+      .add__part {
+        width: auto;
+        margin-bottom: 15px;
+      }
+    }
+    .add__part span {
+      cursor: pointer;
+    }
+
+    .add__part__fix {
+      width: 29.84%;
+    }
+
+    .vin__frame {
+      width: 42.07%;
+      height: 42px;
+      margin: 0 16px;
+      position: relative;
+    }
+    @media screen and (max-width: 900px) {
+      .vin__frame {
+        width: calc(95% - 65px);
+        margin: 0;
+        margin-bottom: 15px;
+      }
+    }
+
+    .phone {
+      width: 25.91%;
+      height: 42px;
+    }
+    @media screen and (max-width: 900px) {
+      .phone {
+        width: 95%;
+      }
+    }
+
+    .phone__label {
+      height: 100%;
+      border-bottom: 1px solid #aaa;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 9px;
+    }
+
+    .phone__input {
+      height: 42px;
+      width: 100%;
+      border: none;
+      outline: none;
+      background: none;
+      padding-right: 16px;
+      box-sizing: border-box;
+      color: #444;
+      font-family: "Roboto", sans-serif;
+    }
+    .phone__input input {
+      color: #777;
+      font-family: "Roboto", sans-serif;
+    }
+
+    .question {
+      width: 7px;
+      height: 11px;
+      position: relative;
+    }
+
+    .question__mark {
+      font-size: 16px;
+      color: #2e71f0;
+      cursor: pointer;
+    }
+
+    .question__message {
+      color: #2a313d;
+      font-size: 12px;
+      width: 200px;
+      background: #fff;
+      border-radius: 3px;
+      box-shadow: 0 3px 20px rgba(0, 0, 0, 0.15);
+      position: absolute;
+      right: -95px;
+      top: -60px;
+      box-shadow: border-box;
+      padding: 11px 13px;
+      display: none;
+    }
+
+    .question.active .question__message,
+    .question:hover .question__message {
+      display: block;
+    }
+
+    .empty {
+      width: 170px;
+      min-width: 170px;
+      justify-content: space-between;
+    }
+
+    .container__scrollable {
+      overflow-y: scroll;
+      height: 100%;
+      width: calc(100% + 20px);
+      box-sizing: border-box;
+      padding-top: 10px;
+    }
+
+    .container__overflow {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .scroll {
+      width: 18px;
+    }
+
+    .parts__container {
+      padding: 0;
+    }
+
+    .error {
+      border: 1px solid #dcdcdc;
+      box-shadow: 0 3px 20px rgba(0, 0, 0, 0.15);
+      width: 228px;
+      height: 57px;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      border-radius: 5px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fff;
+      z-index: 3;
+    }
+
+    .error__message {
+      color: #2a313d;
+      font-size: 12px;
+      width: 200px;
+    }
+
+    .endpopup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .endpopup__body {
+      width: 100%;
+      flex-basis: 100%;
+      padding: 10px 15px;
+    }
+    .endpopup__body > div {
+      margin-bottom: 5px;
+    }
+    .endpopup__body > div.input__title {
+      font-size: 13px;
+      color: #555;
+      padding-left: 15px;
+      margin-bottom: 5px;
+    }
+    .endpopup__body > div input {
+      width: 100%;
+      max-width: 418px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      height: 35px;
+      outline: none;
+      background: none;
+      padding: 0 14px;
+      color: #292929;
+      font-size: 14px;
+      font-weight: 300;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      margin-bottom: 13px;
+    }
+
+    .disabled {
+      background: #cecece;
+      border-color: #afafaf;
+      color: #818181;
+      cursor: not-allowed;
+    }
+
+    .endpopup__container {
+      width: 445px;
+      height: 135px;
+      background: #fff;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .endpopup__container.auto {
+      height: auto;
+      padding-top: 10px;
+    }
+
+    .endpopup__close {
+      width: 23px;
+      height: 23px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      background: #2e71f0 url("../../assets/close-popup.svg") no-repeat center center;
+    }
+
+    .endpopup__message {
+      width: 350px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+    .endpopup__message a {
+      color: #2e71f0;
+      margin-left: 5px;
+    }
+
+    .footer__button__loading {
+      background: url("../../assets/loading.svg") no-repeat center center;
+      width: 50px;
+      margin: 0 auto;
+      height: 42px;
+    }
+
+    .endpopup__check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .endpopup__check__text {
+      margin-left: 10px;
+    }
+
+    .widget-btn {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 15px;
+      font-size: 12px;
+      padding: 2px 5px;
+      border: 1px solid red;
+      border-radius: 5px;
+      color: red;
+      cursor: pointer;
+    }
+
+    @media all and (max-width: 1090px) {
+      .question__message {
+        right: -20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="widget">
+  <div class="endpopup" @click.stop="endPopup = 0" v-if="showPopupForm">
+    <div class="endpopup__container auto" @click.stop="">
+      <div class="endpopup__close" @click.stop="showPopupForm = false"></div>
+      <div class="endpopup__body">
+        <div class="input__title">Телефон<input v-model="userInfo.phones" /></div>
+        <div class="input__title">Город<input v-model="userInfo.locality" /></div>
+        <div class="footer__button" @click="submitWithPhonesAndLocality()" :class="{disabled: !phoneAndLocality}">
+          <div class="footer__button__text">Найти запчасти</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="options">
+    <div class="title">Выберите параметры
+      <!-- .widget-btn(v-if="widget" @click="createWidget") Создать виджет-->
+    </div>
+    <div class="error" :style="errorOptionsPosition" v-if="showErrors && error.options > -1 && error.options < 11">
+      <div class="error__message">Для отправки запроса необходимо заполнить все параметры машины.</div>
+    </div>
+    <div class="options__container">
+      <div class="options-row">
+        <div class="twice-row">
+          <div class="dropdown" :class="getClassForDropdown(id)" v-for="(prop, id) in carProps" v-if="id < 2">
+            <dropdown v-bind="prop" :opened="data.opened === id && !data.nothingWasOpened" @open="data.opened = id; data.nothingWasOpened = false" @close="data.opened = -1" @pick="handleItemPick(id, $event)" @enter="handleKeyEnter(id, $event)"
+              :error="showErrors && error.options === id" @blur="handleDropdownBlur(prop, id, $event)"></dropdown>
+          </div>
+        </div>
+        <div class="twice-row">
+          <div class="dropdown" :class="getClassForDropdown(id)" v-for="(prop, id) in carProps" v-if=" id > 1 && id < 4">
+            <dropdown v-bind="prop" :opened="data.opened === id" @open="data.opened = id" @close="data.opened = -1" @pick="handleItemPick(id, $event)" @enter="handleKeyEnter(id, $event)" :error="showErrors && error.options === id" @blur="handleDropdownBlur(prop, id, $event)"></dropdown>
+          </div>
+        </div>
+        <div class="twice-row">
+          <div class="dropdown" :class="getClassForDropdown(id)" v-for="(prop, id) in carProps" v-if=" id > 3 && id < 6">
+            <dropdown v-bind="prop" :opened="data.opened === id" @open="data.opened = id" @close="data.opened = -1" @pick="handleItemPick(id, $event)" @enter="handleKeyEnter(id, $event)" :error="showErrors && error.options === id" @blur="handleDropdownBlur(prop, id, $event)"></dropdown>
+          </div>
+        </div>
+      </div>
+      <div class="options-row">
+        <div class="twice-row">
+          <div class="dropdown" :class="getClassForDropdown(id)" v-for="(prop, id) in carProps" v-if="id > 5 && id < 8">
+            <dropdown v-bind="prop" :opened="data.opened === id" @open="data.opened = id" @close="data.opened = -1" @pick="handleItemPick(id, $event)" @enter="handleKeyEnter(id, $event)" :error="showErrors && error.options === id" @blur="handleDropdownBlur(prop, id, $event)"></dropdown>
+          </div>
+        </div>
+        <div class="twice-row">
+          <div class="dropdown" :class="getClassForDropdown(id)" v-for="(prop, id) in carProps" v-if="id > 7 && id < 10">
+            <dropdown v-bind="prop" :opened="data.opened === id" @open="data.opened = id" @close="data.opened = -1" @pick="handleItemPick(id, $event)" @enter="handleKeyEnter(id, $event)" :error="showErrors && error.options === id" @blur="handleDropdownBlur(prop, id, $event)"></dropdown>
+          </div>
+        </div>
+        <div class="twice-row">
+          <div class="dropdown" :class="getClassForDropdown(id)" v-for="(prop, id) in carProps" v-if=" id > 9">
+            <dropdown v-bind="prop" :opened="data.opened === id" @open="data.opened = id" @close="data.opened = -1" @pick="handleItemPick(id, $event)" @enter="handleKeyEnter(id, $event)" :error="showErrors && error.options === id" @blur="handleDropdownBlur(prop, id, $event)"></dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="parts">
+    <div class="title">Введите запчасти</div>
+    <div class="error" :style="{top: '-10px', left: '40px', zIndex: 1}" v-if="!details.valid && showErrors">
+      <div class="error__message">Для отправки запроса необходимо выбрать запчасти машины.</div>
+    </div>
+    <div class="parts__container">
+      <div class="container__overflow">
+        <div class="container__scrollable" :style="`height: ${carParts.length * 58 + 58}`"><template v-for="(line, id) in carParts">
+            <buyer-request-part v-bind="line" :id="id" @pick="handlePartPick(id, $event)" @comment="updateComment(id, $event)" @original="updateOriginal(id, $event)" @media="id => mediaLoaderId = id" :error="error.details === id && showErrors"
+              :widget="widget"></buyer-request-part>
+          </template>
+          <div class="last__line">
+            <div class="visible">
+              <div class="add__part" v-if="carParts.length < 30"><span @click="addParts">Добавить запчасть</span></div>
+              <div class="add__part__fix" v-else="v-else"></div>
+              <div class="vin__frame">
+                <input-counter :value="data.vinframe" :max="17" @input="v => data.vinframe = v" placeholder="VIN или Frame" :validate="true"></input-counter>
+              </div>
+              <div class="phone"><label class="phone__label">
+                  <div class="phone__input">
+                    <input-phone :value.sync="data.phone" :styles="{paddingLeft: '16px'}" placeholder="Телефон клиента"></input-phone>
+                  </div>
+                  <div class="question">
+                    <div class="question__mark">?</div>
+                    <div class="question__message"><span>Напишите телефон, это удобно.</span><br /><span>Будет виден только Вам.</span></div>
+                  </div>
+                </label></div>
+            </div>
+            <div class="empty"></div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll">
+        <scroll @scroll="handleScrollbarMovement" v-bind="scrollProps"></scroll>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer__container">
+      <div class="footer__input">
+        <input-counter :value="data.comment" :max="200" @input="v => data.comment = v" placeholder="Примечание"></input-counter>
+      </div>
+      <div class="footer__button" :class="{disabled: !allValid}" @click="addRequest">
+        <div class="footer__button__loading" v-if="pending"></div>
+        <div class="footer__button__text" v-else="v-else">Найти запчасти</div>
+      </div>
+    </div>
+  </div>
+  <media-loader :files="currentFiles" v-if="mediaLoaderId > -1" @close="mediaLoaderId = -1" @file="addFileToPart" @remove="removeFileFromPart" @attach="attachMediaSet" @cancel="resetTemporaryFiles"></media-loader>
+</div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <script type="text/javascript">
+
+const fields = [
+  ['brand', 'Марка'],
+  ['model', 'Модель'],
+  ['generation', 'Поколение'],
+  ['engine_volume', 'Объем двигателя'],
+  ['engine_type', 'Тип двигателя'],
+  ['engine_power', 'Мощность'],
+  ['drive', 'Привод'],
+  ['body', 'Тип кузова'],
+  ['transmission', 'Кпп'],
+  ['body_number', 'Код кузова'],
+  ['engine_number', 'Код двигателя'],
+  ['market', 'Рынок'],
+]
+const carProps = fields.map(([field, title]) => ({
+  field,
+  title,
+  items: [],
+  picked: -1,
+}))
+const data = {
+  opened: 0,
+  comment: "",
+  vinframe: "",
+  phone: "",
+  nothingWasOpened: true,
+};
+
+let carParts = [];
+
+new Vue({
+  el: "#app",
+  data () {
+    return {
+      tempUser: null,
+      pending: false,
+      AskBuyerData: false,
+      carProps,
+      carParts,
+      data,
+      containerHeight: 0,
+      mediaLoaderId: -1,
+      showErrors: false,
+      endPopup: false,
+      visible: true,
+      widget: false,
+      showPopupForm: false,
+      userInfo: {
+        phones : '888',
+        locality: 'Москва'
+      }
+    }
+  },
+  computed: {
+    errorOptionsPosition() {
+      const index = this.error.options;
+      if (index < 0) return { top: "0", left: "0" };
+      const top = index < 6 ? "-10px" : "45px";
+      const offset = `(16.6% * ${index % 6})`;
+      const padding = "(8.3% - 114px)";
+      const left = `calc(${offset} + ${padding})`;
+      return { top, left };
+    },
+    error() {
+      return {
+        details: this.details.invalid,
+        options: this.options.invalid
+      };
+    },
+    phoneAndLocality(){
+      return this.userInfo.locality && this.userInfo.phones;
+    },
+    allValid() {
+      const details = this.error.details < 0;
+      const options = this.error.options < 0;
+      // const phone = this.error.phone;
+      // const notes = this.error.notes;
+
+      return details && options; //&& phone && notes;
+    },
+    currentFiles() {
+      const id = this.mediaLoaderId;
+      if (id < 0) return [];
+      const parts = this.carParts[id];
+      const media = parts ? parts.media : [];
+      return media || [];
+    },
+    scrollableHeight() {
+      return 100;
+    },
+    options() {
+      const options = {
+        fields_filter: 0
+      };
+      let valid = true;
+      let invalid = -1;
+
+      carProps.forEach(({ field, picked, items }, i) => {
+        const item = items[picked];
+        if (!item || !item.value) {
+          if (!valid) return;
+          if (i < 10) {
+            valid = false;
+            invalid = i;
+          }
+          return;
+        }
+        const value = item.value;
+        const title = item.title.length === 0 ? "%" : item.title;
+        options[field] = value === "%" ? title : value;
+        if (value === "%") options.fields_filter += Math.pow(2, i);
+      });
+      return {
+        options,
+        valid,
+        invalid
+      };
+    },
+    details() {
+      const details = [];
+      let valid = true;
+      let invalid = -1;
+
+      const check = ({ comment, original, picked, value, media_set_id }, i) => {
+        if (comment || original || ~picked || value) {
+          if (!(~picked && value)) {
+            if (!valid) return;
+            valid = false;
+            invalid = i;
+            return;
+          } else {
+            const det = {
+              comment,
+              detail_original_number: original,
+              detail_name: value,
+              detail_id: picked
+            };
+            if (media_set_id) det["media_set_id"] = media_set_id;
+
+            details.push({ ...det });
+          }
+        }
+      };
+
+      this.carParts.forEach(check);
+
+      if (details.length === 0) valid = false;
+      return {
+        valid,
+        invalid: details.length === 0 ? 0 : invalid,
+        details
+      };
+    }
+  },
+  methods: {
+    checkIfUserHasPhoneAndCity() {
+      const user = JSON.parse(localStorage.getItem('user'));
+      let phones = this.userInfo.phones;
+      let locality = this.userInfo.locality;
+      if (user !== null) {
+        phones = user['phones'];
+        locality = user['locality'];
+      }
+      return (!!phones && !!locality);
+    },
+    createWidget() {
+
+    },
+    handleDropdownBlur({ items = [] } = {}, id, search) {
+      const index = items.findIndex(
+        ({ value }) => String(value).toLowerCase() === search.toLowerCase()
+      );
+      const item = items[index];
+      const pick = this.handleItemPick;
+      if (!item && search.length > 1 && id > 2) {
+        carProps[id].items.push({
+          title: search,
+          value: "%",
+          index: carProps[id].items.length
+        });
+
+        pick(id, carProps[id].items.length - 1);
+      } else if (item) {
+        pick(id, index);
+      }
+    },
+    async getMediaSet() {
+      const { media_set_id } = await post("/buyer/create-media-set").then(
+        response => response.data
+      );
+      return media_set_id;
+    },
+    async attachMediaSet() {
+      const id = this.mediaLoaderId;
+      this.mediaLoaderId = -1;
+      if (id < 0) return;
+
+      const media_set_id = await this.getMediaSet();
+      if (!media_set_id) return;
+
+      this.$set(carParts[id], "media_set_id", media_set_id);
+
+      carParts[id].media.forEach(({ file }) => {
+        const body = new FormData();
+        body.set("media_element", file, file.name);
+        body.set("media_set_id", media_set_id);
+
+        post("/buyer/add-to-media-set", body)
+          .then(response => {
+            const data = response.data;
+            if (data) console.log(response.data);
+          })
+          .catch(error => console.log(error.message));
+      });
+    },
+    resetTemporaryFiles(tasks = []) {
+      if (!Array.isArray(tasks)) return;
+      const id = this.mediaLoaderId;
+      if (id < 0) return;
+      const length = tasks.length;
+
+      for (let i = 0; i < length; i++) {
+        const { task, index, file } = tasks.pop();
+        if (task === "restore") {
+          carParts[id].media.splice(index, 0, file);
+        }
+        if (task === "remove") {
+          this.removeFileFromPart(index);
+        }
+      }
+    },
+    removeFileFromPart(fileIndex) {
+      const id = this.mediaLoaderId;
+      if (id < 0) return;
+      carParts[id].media.splice(fileIndex, 1);
+    },
+    addFileToPart(file) {
+      const id = this.mediaLoaderId;
+      if (id < 0) return;
+      carParts[id].media.push({
+        ...file
+      });
+    },
+    addParts() {
+      let i = 0;
+
+      while (i++ < 3 && carParts.length < 30) {
+        const emptyPart = {
+          picked: -1,
+          comment: "",
+          original: "",
+          media: [],
+          value: null
+        };
+        carParts.push(emptyPart);
+      }
+      /** @type {HTMLElement} */
+      const el = this.$el;
+      if (!el || typeof el.querySelector !== "function") return;
+      const container = el.querySelector(".parts .container__scrollable");
+      if (!container) return;
+      this.$nextTick(() => {
+        container.scrollTop = container.scrollHeight;
+      });
+    },
+    handlePartPick(line, { id, name }) {
+      const picked = isNaN(id) ? -1 : id;
+      const value = name || "";
+      this.$set(this.carParts[line], "picked", picked);
+      this.$set(this.carParts[line], "value", value);
+    },
+    updateComment(id, comment) {
+      const value = comment || "";
+      this.$set(this.carParts[id], "comment", value);
+    },
+    updateOriginal(id, original) {
+      const value = original || "";
+      this.$set(this.carParts[id], "original", value);
+    },
+    /**
+     * @param {Number} id
+     * @param {{custom: String, list: carProps, filtered: carProps}} event
+     */
+    handleKeyEnter(id, event) {
+      const { custom, list, filtered } = event;
+      const pick = this.handleItemPick;
+      if (id > 2) {
+        if (custom.length > 0) {
+          carProps[id].items.push({
+            title: custom,
+            value: "%",
+            index: carProps[id].items.length
+          });
+          pick(id, carProps[id].items.length - 1);
+        } else if (filtered.length > 0) {
+          pick(id, filtered[0].index);
+        } else {
+          pick(id, list[0].index);
+        }
+      } else {
+        if (filtered.length > 0) {
+          pick(id, filtered[0].index);
+        } else {
+          pick(id, list[0].index);
+        }
+      }
+    },
+    clearBefore(id) {
+      for (let i = id + 1; i < carProps.length; i++) {
+        carProps[i].items = [];
+      }
+    },
+    handleItemPick(id, propIndex) {
+      this.showErrors = false;
+      this.clearBefore(id);
+      carProps[id].picked = propIndex;
+      if (carProps.length - 1 > id) {
+        this.fetchField(id + 1);
+      } else {
+        this.data.opened = -1;
+      }
+    },
+    getClassForDropdown(id) {
+      const main = `item--${id}--${id > 5 ? "bottom" : "top"}`;
+      const opened = (this.data.opened === id && !this.data.nothingWasOpened) ? "opened" : "";
+      // console.log(`Opened state. Id: ${id} State: ${opened}`)
+      return `${opened} ${main}`;
+    },
+    /**
+     * @param {[String]} data
+     * @param {Number} field
+     */
+    setItemsToField(data, field) {
+      if (!Array.isArray(data) || isNaN(field)) return;
+      const items = data
+        // .sort((a, b) => {
+        //   return a.localeCompare(b);
+        // })
+        .map((item, index) => ({
+          title: item,
+          value: item || "%",
+          index
+        }));
+      carProps[field].items =
+        items && items.length > 0
+          ? items
+          : [
+            {
+              title: "",
+              value: "%",
+              index: 0
+            }
+          ];
+      this.data.opened = field === 11 ? -1 : field;
+    },
+    /**
+     * @param {Number} field
+     * @type {fields_filter: Number}
+     */
+    getBodyForField(field) {
+      const carProps = this.carProps.slice(0, field);
+      const body = {};
+      let fields_filter = 0;
+
+      carProps.forEach(({ field, picked, items }, index) => {
+        body[field] = items[picked].value;
+        fields_filter += body[field] === "%" ? Math.pow(2, index) : 0;
+      });
+      return Object.assign(body, {
+        fields_filter
+      });
+    },
+    /** @param {Number} field */
+    fetchField(field) {
+      if (field < 0) return;
+      const body = this.getBodyForField(field);
+      return post("/buyer/autocomplete-options", body)
+        .then(({ data }) => {
+          const { message } = data || {};
+          if (message) return new Error(message);
+          return this.setItemsToField(data, field);
+        })
+        .catch(error => {
+          console.log(error.code || "", error.message);
+        });
+    },
+    openLastField() {
+      const last = carProps.findIndex(function ({ items = [], picked = -1 }) {
+        return items.length === 0 || picked === -1;
+      });
+      this.data.opened = last >= 0 ? last : 0;
+    },
+    updateContainerHeight() {
+      /** @type {HTMLElement} */
+      const el = this.$el;
+      if (!el || typeof el.querySelector !== "function") return;
+      const height = window.innerHeight - 304;
+      this.containerHeight = isNaN(height) ? 0 : height >= 0 ? height : 0;
+    },
+    clearForm() {
+      carProps.forEach(car => {
+        car.picked = -1;
+        car.items = [];
+      });
+
+      this.data.comment = "";
+      this.data.phone = "";
+      this.data.vinframe = "";
+      this.data.opened = 0;
+      this.carParts.splice(0, carParts.length);
+      this.addParts();
+
+      this.fetchField(this.data.opened);
+    },
+    submitWithPhonesAndLocality(){
+      this.addRequestNext();
+    },
+    addRequest() {
+      if (this.pending || !this.allValid) return;
+      if (this.widget) {
+        window.parent.postMessage("SHOW_POPUP", '*');
+      }
+      this.AskBuyerData = true;
+      this.pending = true;
+      // this.$once("getbuyerdata", res => {
+      //   this.AskBuyerData = false;
+      //   if (res) {
+      //     this.addRequestNext();
+      //   } else {
+      //     this.pending = false;
+      //   }
+      // });
+      const user = JSON.parse(localStorage.getItem('user'))
+      if(user !== null) {
+        const phones = user['phones'] || "";
+        const locality = user['locality'] || "";
+        this.userInfo = {phones, locality};
+      }
+
+
+      if (!this.checkIfUserHasPhoneAndCity()) {
+        // const user = JSON.parse(localStorage.getItem('user'))
+        // const phones = user['phones'] || false;
+        // const locality = user['locality'] || false;
+        // this.userInfo = {phones, locality};
+        this.showPopupForm = true;
+      } else {
+        this.addRequestNext();
+      }
+    },
+    addRequestNext() {
+      if (!this.allValid) {
+        this.showErrors = true;
+        this.pending = false;
+        return;
+      }
+      const request = {
+        options: this.options.options,
+        details: this.details.details,
+        notes: this.data.comment || "",
+        vin_frame: this.data.vinframe || "",
+        phone: this.data.phone || this.userInfo.phones || '',
+        //locality: this.userInfo.locality || ''
+      };
+      if (this.widget) {
+        localStorage.setItem('memorizedRequest', JSON.stringify(request));
+        console.log(localStorage.getItem('memorizedRequest'));
+        return;
+      }
+      this.showPopupForm = false;
+      post("/buyer/add-request", request)
+        .then((d) => {
+          const data = d.data;
+          console.log(parent)
+          // this.endPopup = 1;
+
+          // if (data) {
+          //   this.endPopup = 2;
+          //   console.log(request, data);
+          //   return;
+          // }
+          this.clearForm();
+          if (!localStorage.getItem("dontShowBuyerRequestPopup")) {
+            if (!this.checkIfUserHasPhoneAndCity()) {
+              this.endPopup = 1;
+
+              if (parent['info_from_widget']) {
+                parent.info_from_widget(this.endPopup);
+              }
+            }
+          }
+        })
+        .catch(error => {
+          this.endPopup = 2;
+          console.log(request, error.message);
+        })
+        .finally(() => {
+          this.pending = false;
+        });
+    },
+    addRequestOnRegister(url) {
+      if (localStorage.getItem('memorizedRequest') === null) {
+        return;
+      }
+      const request = JSON.parse(localStorage.getItem('memorizedRequest'));
+      localStorage.removeItem('memorizedRequest')
+      // console.log(this.tempUser);
+
+      post(url, request)
+        .then(({ data }) => {
+          if (data) {
+            this.endPopup = 2;
+            console.log(request, data);
+            return;
+          }
+          this.clearForm();
+          if (!localStorage.getItem("dontShowBuyerRequestPopup")) {
+            this.endPopup = 1;
+          }
+          // window.location.href = 'https://lk.dev.zaptap.ru';
+        })
+        .catch(error => {
+          this.endPopup = 2;
+          console.log(request, error.message);
+        })
+        .finally(() => {
+          this.pending = false;
+        });
+
+    },
+    neverShowEndPopup() {
+      localStorage.setItem("dontShowBuyerRequestPopup", true);
+      this.endPopup = 0;
+    }
+  },
+  mounted() {
+
+    let { query = {} } = this.$route;
+    if (query.widget) {
+      this.widget = true;
+      console.log(this.widget);
+    }
+
+    // Start progress-bar
+    this.$Progress.start();
+    // Add car parts if no exists
+    if (carParts.length === 0) this.addParts();
+    // Open last field or prefetch and finish progress-bar
+    if (this.data.opened < 0) {
+      //this.openLastField();
+      this.$Progress.finish();
+    } else {
+      this.fetchField(this.data.opened).then(() => {
+        this.$Progress.finish();
+      });
+    }
+    // Update container height on window resize event
+    this.updateContainerHeight();
+    main.$on("resize", this.updateContainerHeight);
+  },
+  created() {
+
+    window.addEventListener('message', event => {
+      if (event.data.type === 'addRequest') {
+        this.addRequestOnRegister('/widget/add-request/' + event.data.user_id)
+      }
+    })
+    post("profile/get-user-profile", {})
+      .then(response => {
+        const { data } = response;
+        if (!data) return;
+        this.tempUser = data;
+        console.log('/buyer/add-request');
+        this.addRequestOnRegister('/buyer/add-request');
+      })
+      .catch(console.log);
+  },
+  watch: {
+    allValid(valid) {
+      if (valid) {
+        this.showErrors = false;
+      }
+    }
+  }
+});
+Vue.component('inputPhone', {
+  data() {
+    return {
+      position: 0,
+    };
+  },
+  computed: {
+    phone: {
+      get() {
+        return String(this.value || '');
+      },
+      set(v = '') {
+        const value = String(v);
+        event.target.value = value;
+        this.$emit('update:value', value);
+      },
+    },
+  },
+  methods: {
+    handleFocus(e) {
+      e.target.value = '+7';
+    },
+    handleChange(event) {
+      const type = String(event.inputType).startsWith('delete');
+      const pos = event.target.selectionStart;
+      const old = this.phone;
+      const isClick = event.type === 'click';
+      const recent = this.mask(event.target.value);
+      this.phone = recent;
+
+      this.$nextTick(() => {
+        if (recent.length >= old.length) {
+          const nextDigit = recent.slice(pos).match(/\d/);
+          if (nextDigit) {
+            const next = pos + nextDigit.index;
+            if (pos < 4) {
+              this.setCursor(5);
+            } else if (recent[next - 1] === ' ' || recent[next - 1] === '-') {
+              this.setCursor(next + 1);
+            } else {
+              this.setCursor(next);
+            }
+          } else {
+            this.setCursor(recent.length);
+          }
+        } else {
+          const prevDigit = recent
+            .slice(0, pos)
+            .split('')
+            .reverse()
+            .join('')
+            .match(/\d/);
+          if (prevDigit && pos > 3) {
+            this.setCursor(pos - prevDigit.index);
+          } else {
+            this.setCursor(4);
+          }
+        }
+      });
+    },
+    correctPhone(value = '') {
+      if (!value.startsWith('+7')) {
+        const fromPlus = value.startsWith('+');
+        this.phone = '+7' + (fromPlus ? '' : value);
+        return;
+      }
+      this.phone = value;
+    },
+    handleBlur() {
+      this.$nextTick(() => {
+        if (this.phone.length <= 2) {
+          this.phone = '';
+        }
+      });
+    },
+    handleInput(event) {
+      this.correctPhone(event.target.value);
+    },
+    handleFocus(event) {
+      this.position = event.target.selectionStart;
+      this.correctPhone(event.target.value);
+      this.handleChange(event);
+    },
+    mask(value = '') {
+      const trimmed = String(value)
+        .replace(/\D/gi, '')
+        .slice(0, 11)
+        .split('');
+      if (trimmed[0] === '7') trimmed.shift();
+      const result = trimmed.reduce((result, num, i) => {
+        let post = '';
+        if (i === 2) post = ') ';
+        if (i === 5 || i === 7) post = '-';
+        post = i < trimmed.length - 1 ? post : '';
+        return result + num + post;
+      }, '');
+      return new String(
+        result ? '+7 (' + result : value.startsWith('+7') ? '+7' : '',
+      ).slice(0, 18);
+    },
+    setCursor(pos) {
+      const input = this.$el;
+      if (!input || !input.querySelector) return;
+
+      if (!input) {
+        return false;
+      } else if (input.createTextRange) {
+        var textRange = input.createTextRange();
+        textRange.collapse(true);
+        textRange.moveEnd(pos);
+        textRange.moveStart(pos);
+        textRange.select();
+        return true;
+      } else if (input.setSelectionRange) {
+        input.setSelectionRange(pos, pos);
+        return true;
+      }
+      this.position = pos;
+
+      return false;
+    },
+  },
+  template: '<input class="inputphone" type="text" :value="phone" maxlength="18" @change="handleChange" @input="handleInput" @blur="handleBlur" @click="handleFocus" v-bind="$props" />'
+})
+
+Vue.component('InputCounter', {
+  props: {
+    max: {
+      type: Number,
+    },
+    value: {
+      type: [String, Number],
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    error: {
+      type: Boolean,
+    },
+    validate: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    left() {
+      return this.max - this.value.length;
+    },
+  },
+  methods: {
+    suffix(left) {
+      // LAST 2 NUMBERS
+      const end = left % 100;
+      if (
+        end % 10 === 0 ||
+        (end >= 5 && end <= 20) ||
+        (end % 10 >= 5 && end % 10 <= 9)
+      ) {
+        return 'ов';
+      } else if (end % 10 === 1) {
+        return '';
+      } else if (end % 10 >= 2 && end % 10 <= 4) {
+        return 'а';
+      }
+    },
+    handleInput(e) {
+      const { target } = e || {};
+      if (!target) return;
+      e.preventDefault();
+      e.target.value = e.target.value.substr(0, this.max)
+      /** @type {{value: string}} */
+      const { value } = target;
+      if (this.validate) {
+        const notAlphaNumeric = /[^a-zA-Z0-9]+/g;
+        const filtered = value.split(notAlphaNumeric).join('');
+        this.$emit('input', filtered);
+        e.target.value = filtered;
+      } else {
+        this.$emit('input', e.target.value);
+      }
+    }
+  },
+  template: '<label class="container" :class="{disabled, counterror: error}"><input class="input" type="text" :maxlength="max" :value="value" @input="handleInput" :placeholder="placeholder" :disabled="disabled" /><div class="counter">{{ left }} символ{{ suffix(left)}}</div></label>'
+})
+
+//   mixins: [Scroll],
+
+
+  </script>
+</body>
+</html>

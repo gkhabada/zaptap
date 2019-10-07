@@ -4,8 +4,7 @@
     .loading__message Загрузка, пожалуйста подождите.
 
   div(v-else-if="!isAuthorized && isLocalhost && !isWidget")
-    form-login(@toggle="toggleform" @login="login" :err.sync="serverr" v-if="formtype === 'login'" )
-    //- form-register(@toggle="toggleform" @register="register" :err.sync="serverr" :registered="isRegistered" v-else)
+    landing
 
   .wrapper(v-else-if="isUserDataLoaded && !isWidget")
     notifications(group="stock" classes="notification" position="bottom right" :max="3" :duration="6000")
@@ -32,17 +31,16 @@ import { user, login, register, redirectIfUnauthorized, isLocalhost } from "../.
 import buyerAnswersStore from "../BuyerAnswers/store.js";
 import { post } from "../../api/request";
 
+import Landing from '../../pages/Landing/Landing'
+
 const Tour = () => import("../Tour.vue");
-const FormLogin = () => import("../FormLogin.vue");
-const FormRegister = () => import("../FormRegister.vue");
 
 export default Vue.extend({
   components: {
     VueHeader,
     Sidebar,
     Tour,
-    FormLogin,
-    FormRegister
+    Landing
   },
   data: () => ({
     showTour: false,
@@ -61,6 +59,7 @@ export default Vue.extend({
       return !!this.user.token;
     },
     isUserDataLoaded() {
+      console.log(1, this.user)
       return !!this.user.data;
     },
   },
@@ -71,23 +70,6 @@ export default Vue.extend({
       } else {
         this.formtype = "login";
       }
-    },
-    async login({ email, password }) {
-      this.pending = true;
-      this.serverr = false;
-      await login({ email, password }).catch(err => {
-        this.serverr = true;
-      });
-      this.pending = false;
-    },
-    async register({ email, password }) {
-      this.pending = true;
-      this.serverr = false;
-      await register({ email, password }).catch(err => {
-        this.serverr = true;
-      });
-      if (!this.serverr) this.isRegistered = true;
-      this.pending = false;
     },
     handleTour() {
       const { name, query = {} } = this.$route;
