@@ -1,0 +1,349 @@
+.header
+  height: 60px
+  position: relative
+  background: #eaeaea
+  display: flex
+  padding-right: 13px
+  box-sizing: border-box
+
+.header__item,
+.line__item
+  font-size: 14px
+  height: 100%
+  color: #26282f
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  // padding: 0 10px
+  box-sizing: border-box
+  overflow: hidden
+
+  &:nth-child(1)
+    width: 11.38%
+  &:nth-child(2)
+    width: 15.52%
+  &:nth-child(3)
+    width: 12.93%
+  &:nth-child(4)
+    width: 13.58%,
+  &:nth-child(5)
+    width: 14.25%
+  &:nth-child(6)
+    width: 18.09%
+  &:nth-child(7)
+    width: 14.25%
+
+.finished
+  .header__item,
+  .line__item
+    &:nth-child(1)
+      width: 14.998%
+    &:nth-child(2)
+      width: 19.138%
+    &:nth-child(3)
+      width: 16.548%
+    &:nth-child(4)
+      width: 17.198%,
+    &:nth-child(5)
+      width: 17.868%
+    &:nth-child(6)
+      width: 0%
+
+
+.header__title
+  text-align: center
+  line-height: 18px
+  display: flex
+  align-items: flex-end
+
+  &.client_price,
+  &.price
+    cursor: pointer
+    &.arrows::after
+      content: ''
+      display: block
+      background: url("../../assets/table_header_arrow.svg") no-repeat center center
+      width: 5px
+      min-width: 5px
+      height: 8px
+      min-height: 8px
+      margin-bottom: 5px
+      margin-left: 6px
+
+
+.header__finish,
+.header__remove
+  height: 41px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+
+.finish__button
+  color: #26282f
+  border: 1px solid #0066ff
+  height: 20px
+  width: 80px
+  text-align: center
+  line-height: 20px
+  font-size: 13px
+  border-radius: 3px
+  cursor: pointer
+
+  &.disabled
+    opacity: 0.5
+    border-color: #aaa
+    cursor: default
+
+.finish__mark,
+.remove__button
+  font-size: 12px
+  color: #2f72f0
+  border-bottom: 1px dotted
+  display: inline
+  cursor: pointer
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.header__remove
+  width: 100%
+  justify-content: flex-end
+  align-items: flex-end
+
+.table__close
+  width: 24px
+  height: 24px
+  background: #2e71f0 url("../../assets/closetable.svg") no-repeat center center
+  position: absolute
+  right: 0
+  top: 0
+  cursor: pointer
+
+.line
+  height: 55px
+  background: #fafafa
+  display: flex
+  position: relative
+
+  &:nth-child(2n)
+    background: #f6f6f6
+
+  &.picked::after
+    content: ''
+    display: block
+    height: 100%
+    width: 3px
+    position: absolute
+    background: #2f72f0
+
+.line__item
+  font-size: 12px
+  height: 100%
+  color: #444343
+  display: flex
+  align-items: center
+  justify-content: center
+  // padding: 0 10px
+  box-sizing: border-box
+
+
+.item__cost
+  width: 71px
+  height: 26px
+  border: 1px solid #dcdcdc
+  background: #fff
+  display: block
+  border-radius: 3px
+  text-align: center
+  color: #444343
+  font-size: 12px
+
+.item__check
+  width: 14px
+  height: 14px
+  border: 1px solid #bcbfbf
+  cursor: pointer
+
+  &.checked
+    background: #57bb63 url("../../assets/buyer_orders_table_check.svg") no-repeat center center
+    border-color: #57bb63
+
+.item__last
+  display: flex
+  align-items: center
+  width: 100%
+
+.item__comment
+  width: 60%
+
+.comment__button
+  width: 18px
+  height: 16px
+  background: url("../../assets/buyer_orders_table_comment.svg") no-repeat center center
+  cursor: default
+
+  &.active
+    background: url("../../assets/buyer_orders_table_comment__fill.svg") no-repeat center center
+    cursor: pointer
+
+.item__remove
+  width: 40%
+
+.remove__item
+    width: 8px
+    height: 8px
+    background: url("../../assets/buyer_orders_table_remove.svg") no-repeat center center
+    cursor: pointer
+
+.item__log
+  //color: #2e71f0
+  //text-decoration: underline
+  text-align: center
+  //cursor: pointer
+
+
+.container
+  display: flex
+  height: calc(100vh - 50px)
+  // margin-top: -50px
+
+.container__scrollable
+  overflow-y: scroll
+  height: 100%
+  width: calc(100% + 20px)
+
+.container__overflow
+  height: 100%
+  width: 100%
+  overflow: hidden
+
+.scroll
+  height: 100%
+  box-sizing: border-box
+
+.scroll > .wrapper
+  margin: 5px
+  margin-right: 0px
+
+.details__header
+  margin-top: 10px
+  display: flex
+  justify-content: space-between
+  width: 100%
+  background: #ebebeb
+  height: 56px
+  position: relative
+
+.details__user
+  display: flex
+  align-items: center
+  padding-left: 10px
+  z-index: 1
+  cursor: pointer
+
+.user__data
+  display: flex
+  justify-content: space-between
+
+.data__common
+  display: flex
+  align-items: center
+
+.data__pic
+  width: 31px
+  height: 31px
+  border-radius: 50%
+  position: relative
+  overflow: hidden
+
+  .image
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+
+  .preview
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    background: #222
+    border-radius: 50%
+    text-align: center
+    line-height: 32px
+    font-weight: bold
+    color: #fff
+
+.data__name
+  margin-left: 13px
+  color: #2e71f0
+  font-weight: bold
+  font-size: 16px
+
+.data__reviews
+  margin-left: 10px
+  font-size: 13px
+  color: #9a9da3
+
+.data__plus
+  color: #57bb63
+  font-size: 13px
+  margin-left: 6px
+
+.data__minus
+  color: #f02e60
+  font-size: 13px
+  margin-left: 6px
+
+.seller__phone,
+.client__phone
+  height: 18px
+  line-height: 20px
+  font-size: 13px
+  margin-left: 10px
+  color: #a7a9af
+
+.details__tools
+  display: flex
+  width: 100%
+  height: 100%
+  justify-content: flex-end
+  align-items: center
+  position: absolute
+
+  .check__container
+    width: 18.09%
+    display: flex
+    justify-content: center
+
+  .last__container
+    width: 14.25%
+
+  .item__last
+    justify-content: flex-end
+
+  .item__comment
+    font-size: 13px
+    color: #2e71f0
+
+  .item__note
+    transform: translateX(-50px)
+    color: #bbb
+    cursor: default
+
+    &.active
+      text-decoration: underline
+      color: #2e71f0
+      cursor: pointer
+
+.data__city
+  font-size: 14px
+  color: #555
+  margin-left: 10px

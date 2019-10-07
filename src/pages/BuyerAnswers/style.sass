@@ -1,0 +1,245 @@
+@import '../../assets/mixins.sass'
+
+.buyeranswers,
+.buyeranswerscart
+  height: 100%
+  padding: 0 20px
+  width: 100%
+  box-sizing: border-box
+  display: block
+  font-family: 'Roboto', sans-serif
+
+.header
+  width: 100%
+  height: 88px
+  position: relative
+  transition: height 0.3s 0.3s
+  display: flex
+  align-items: center
+
+.folders
+  display: flex
+  align-items: center
+  height: 42px
+  margin-top: 5px
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100%
+  box-shadow: inset 0 -1px #e5eef8
+
+.opacity-enter-active,
+.opacity-leave-active
+  transition: opacity 0.3s 0.3s
+
+.opacity-enter-to,
+.opacity-leave
+  opacity: 1
+
+.opacity-enter,
+.opacity-leave-to
+  opacity: 0
+
+.folders__item
+  padding: 0 3px
+  line-height: 42px
+  height: 42px
+  box-sizing: border-box
+  color: #bcbfbf
+  font-size: 14px
+  border-bottom: 3px solid transparent
+  cursor: pointer
+  margin-right: 16px
+  text-decoration: none
+
+  &.active
+    border-bottom-color: #2e71f0
+    cursor: default
+    color: #555
+
+.content
+  display: flex
+  justify-content: space-between
+
+.table
+  height: calc(100vh - 130px)
+  position: relative
+  width: 100%
+  transition: width 0.3s
+  margin-right: 15px
+
+
+.current
+  width: 250px
+  min-width: 250px
+  // overflow: hidden
+  transition: width 0.3s, margin 0.3s
+
+.filter
+  display: flex
+  max-width: calc(100vw - 210px)
+
+.search
+  display: flex
+  align-items: center
+  box-sizing: border-box
+  padding-right: 6px
+  border-bottom: 1px solid #ddd
+  height: 41px
+  line-height: 41px
+  margin-right: 15px
+
+.search__input
+  border: none
+  outline: none
+  padding: 0 15px
+  color: #444
+  font-size: 13px
+  height: 100%
+
+  @include placeholder
+    color: #444
+
+.search__icon
+  width: 16px
+  min-width: 16px
+  height: 16px
+  background: url("../../assets/filter_search_icon.svg") no-repeat 0 0
+
+.dropdown
+  height: 42px
+  width: 172px
+  z-index: 1
+  margin-left: 15px
+
+.answer
+  width: 0%
+  overflow: hidden
+
+.opened .answer
+  width: 100%
+  max-width: calc(100vw - 670px)
+
+.answer__details
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 100%
+
+.answer__info
+  display: flex
+
+.answer__id
+  color: #555
+  font-size: 14px
+  b
+    margin-left: 10px
+
+.answer__client
+  color: #555
+  font-size: 14px
+  // margin-left: 10px
+
+.answer__phone
+  color: #555
+  font-size: 14px
+  // font-weight: bold
+  padding-left: 25px
+  position: relative
+  margin-left: 10px
+  font-weight: bold
+
+  &::before
+    content: ''
+    display: block
+    width: 18px
+    height: 18px
+    position: absolute
+    top: 0
+    left: 0
+    background: url("../../assets/header_phone.svg") no-repeat center center
+
+.order__info
+  display: flex
+  align-items: center
+
+.order__counter
+  color: #9a9da3
+  font-size: 14px
+
+.order__sum
+  color: #525358
+  font-size: 14px
+  margin-left: 10px
+
+.order__cost
+  color: #525358
+  font-size: 14px
+  font-weight: bold
+  margin-left: 5px
+
+.order__cart
+  background: #2e71f0 url("../../assets/cart_icon.svg") no-repeat center center
+  width: 31px
+  height: 31px
+  border-radius: 50%
+  cursor: pointer
+  margin-left: 10px
+
+  &.disabled
+    background-color: #ddd
+    cursor: default
+
+.buyeranswers
+  &.opened
+    .table
+      position: relative
+      width: 250px
+      height: calc(100vh - 131px)
+      transform: translateY(0)
+
+    .header
+      height: 42px
+      padding-top: 10px
+
+    .current
+      margin: 0 20px 0
+
+    .answer
+      padding-top: 20px
+      box-sizing: border-box
+
+
+
+  &:not(.opened)
+    .current
+      width: 0%
+      margin-left: 0px
+
+.loadingpage
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  height: 100%
+
+.loadingcircle
+  background: url("../../assets/loading.svg") no-repeat center center
+  width: 50px
+  margin: 20px auto 0
+  height: 50px
+
+.loadingtitle
+  font-size: 16px
+  font-weight: bold
+  font-family: 'Roboto', sans-serif
+  color: #555
+  min-width: 200px
+
+.clear__filters
+  font-size: 14px
+  line-height: 42px
+  color: #555
+  text-decoration: underline
+  white-space: nowrap
+  cursor: pointer

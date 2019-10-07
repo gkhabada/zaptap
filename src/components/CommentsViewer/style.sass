@@ -1,0 +1,199 @@
+.popupwrapper
+  position: fixed
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 2
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0,0,0,0.7)
+  cursor: pointer
+
+.container
+  position: relative
+  width: 640px
+  max-height: 570px
+  cursor: default
+
+.close
+  width: 24px
+  height: 24px
+  background: url('../../assets/close-popup.svg') no-repeat
+  position: absolute
+  top: 0
+  right: -1px
+  z-index: 1
+  cursor: pointer
+
+.preview
+  height: 330px
+  width: 100%
+  position: relative
+
+.preview__prev
+  width: 51px
+  height: calc(100% - 36px)
+  background: url("../../assets/sliderprev.svg") no-repeat center center
+  position: absolute
+  top: 0
+  left: 0
+  cursor: pointer
+
+  &:hover
+    background-color: rgba(0,0,0,0.1)
+
+.preview__next
+  width: 51px
+  height: calc(100% - 36px)
+  background: url("../../assets/slidernext.svg") no-repeat center center
+  position: absolute
+  top: 0
+  right: 0
+  cursor: pointer
+
+  &:hover
+    background-color: rgba(0,0,0,0.1)
+
+.preview__image
+  width: 100%
+  height: 100%
+  background-color: #fff
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+
+
+.preview__tools
+  position: absolute
+  bottom: 0
+  left: 0
+  height: 36px
+  width: 100%
+  background: rgba(0,0,0,0.5)
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.remove
+  margin-left: 20px
+  cursor: pointer
+  width: 16px
+  height: 16px
+  background: url("../../assets/sliderremove.svg") no-repeat center center
+  opacity: 0
+  cursor: default
+
+.toggleview
+  margin-right: 20px
+  cursor: pointer
+  width: 16px
+  height: 16px
+  background: url("../../assets/image_mode_auto.svg") no-repeat center center
+  &.contain
+    background-image: url("../../assets/image_mode_contain.svg")
+
+.spoiler
+  height: 50px
+  line-height: 50px
+  background: #F6F6F6 //url('../../assets/spoiler_closed.svg') no-repeat 96% center
+  background-size: 12px 7px
+  text-indent: 20px
+  font-size: 14px
+  font-family: Roboto, sans-serif
+  color: #26282F
+  cursor: pointer
+  position: relative
+  border-bottom: 1px solid #ddd
+  font-weight: bold
+
+  &.open
+    background: #fff
+    border: none
+
+    &:not(.sellerrequests)::after
+      content: ''
+      display: block
+      position: absolute
+      right: 30px
+      top: 20px
+      width: 10px
+      height: 10px
+      background: #2e71f0
+      border-radius: 5px
+
+    &.sellerrequests
+      cursor: default
+
+.comments
+  background: #fff
+
+.comment
+  background: #fff
+  padding: 0 20px 20px
+  font-size: 14px
+  font-family: Roboto, sans-serif
+  color: #26282F
+  word-wrap: break-word
+
+.slider
+  display: flex
+  margin-top: 20px
+
+.prev
+  width: 36px
+  height: 55px
+  cursor: pointer
+  background: url("../../assets/collectionprev.svg") no-repeat center center
+  &.hidden
+    opacity: 0
+    display: none
+    cursor: default
+
+.next
+  width: 36px
+  height: 55px
+  cursor: pointer
+  background: url("../../assets/collectionnext.svg") no-repeat center center
+  &.hidden
+    opacity: 0
+    cursor: default
+    display: none
+
+.collection
+  width: 540px
+  height: 55px
+  overflow: hidden
+
+.movingblock
+  display: flex
+  width: 540px
+  transition: transform 0.2s
+  transform: translateX(0px)
+
+.item
+  width: 55px
+  min-width: 55px
+  height: 55px
+  margin-right: 5px
+  background-color: #eee
+  background-size: cover
+  position: relative
+  overflow: hidden
+  cursor: pointer
+  &::after
+    content: ''
+    display: block
+    transition: transform 0.2s
+    position: absolute
+    background: #2e71f0
+    height: 4px
+    width: 100%
+    left: 0
+    bottom: -4px
+
+  // &:hover
+  &.active
+    &::after
+      transform: translateY(-4px)

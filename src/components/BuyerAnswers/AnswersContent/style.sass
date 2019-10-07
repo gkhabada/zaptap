@@ -1,0 +1,361 @@
+.contacts
+  display: flex
+  justify-content: space-between
+
+.social
+  display: flex
+  // justify-content: space-between
+  align-items: center
+  // width: 150px
+  margin-left: 20px
+
+.social__mail
+  width: 22px
+  height: 16px
+  background: url("../../../assets/header_mail.svg") no-repeat 0 0
+  background-size: contain
+  margin-left: 10px
+
+.social__phone
+  width: 22px
+  height: 22px
+  background: url("../../../assets/header_phone_icon.png") no-repeat 0 0
+  background-size: contain
+  margin-left: 10px
+
+.social__whatsup
+  width: 22px
+  height: 22px
+  background: url("../../../assets/header_whatsup_icon.svg") no-repeat 0 0
+  background-size: contain
+  margin-left: 10px
+
+.social__viber
+  width: 20px
+  height: 22px
+  background: url("../../../assets/header_viber_icon.svg") no-repeat 0 0
+  background-size: contain
+  margin-left: 10px
+
+.social__telegram
+  width: 22px
+  height: 22px
+  background: url("../../../assets/header_telegram_icon.svg") no-repeat 0 0
+  background-size: contain
+  margin-left: 10px
+
+.social__skype
+  width: 22px
+  height: 22px
+  background: url("../../../assets/header_skype_icon.svg") no-repeat 0 0
+  background-size: contain
+  margin-left: 10px
+
+.phone
+  color: #525358
+  font-size: 14px
+  position: relative
+  font-weight: bold
+  text-decoration: none
+
+  &::before
+    content: "Продавец"
+    margin-right: 40px
+    font-weight: normal
+    display: block
+    margin-bottom: 3px
+
+  &::after
+    content: ''
+    display: block
+    width: 18px
+    height: 18px
+    position: absolute
+    top: 0
+    left: 80px
+    background: url("../../../assets/header_phone.svg") no-repeat center center
+
+.check
+  color: #2e71f0
+  font-size: 13px
+  font-weight: 300
+  cursor: pointer
+  text-decoration: underline
+  margin-top: 20px
+
+.top
+  padding-bottom: 15px
+  border-bottom: 1px solid #eee
+  box-sizing: border-box
+
+.tabs
+  display: flex
+
+.tabs__item
+  margin-right: 20px
+  height: 42px
+  line-height: 42px
+  box-sizing: border-box
+  color: #969696
+  font-size: 14px
+  border-bottom: 3px solid transparent
+  cursor: pointer
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+  &.active
+    cursor: default
+    border-bottom-color: #2e71f0
+    color: #2e71f0
+
+  &.disabled
+    cursor: default
+
+.header
+  display: flex
+  background: #eaeaea
+  align-items: center
+  height: 42px
+
+.header__item
+  width: 50%
+  text-align: center
+  color: #26282f
+  font-size: 14px
+  font-weight: bold
+
+  &:nth-child(3)
+    width: 140px
+    min-width: 140px
+
+  &.cost,
+  &.user__cost
+    cursor: pointer
+
+  &.user__cost
+    background: url("../../../assets/user_cost.svg") no-repeat right center
+
+.header__check
+  width: 30px
+  min-width: 30px
+
+.header__comment
+  width: 55px
+  min-width: 55px
+
+.noanswers
+  color: #444
+  font-size: 13px
+  display: flex
+  height: 100%
+  align-items: center
+  justify-content: center
+  max-height: 60px
+
+.detail
+  height: 42px
+  display: flex
+  align-items: center
+  background: #fafafa
+  cursor: pointer
+  position: relative
+
+  &:nth-child(2n)
+    background: #f6f6f6
+
+  &.active
+    background: #d8d8d8
+
+  &.active
+    &::before
+      content: ''
+      display: block
+      width: 3px
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      background: #0073f4
+
+
+.detail__mark
+  width: 30px
+  min-width: 30px
+  display: flex
+  justify-content: center
+
+  &.active::after
+    content: ''
+    display: block
+    width: 9px
+    height: 9px
+    background: #f02e60
+    border-radius: 50%
+
+.detail__text
+  width: 50%
+  text-align: center
+  font-size: 13px
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+
+.detail__input
+  text-align: center
+  font-size: 13px
+  height: 28px
+  // border: 1px solid #dcdcdc
+  border-radius: 3px
+  width: 100px
+  min-width: 100px
+  line-height: 28px
+
+.detail__price
+  width: 100px
+  min-width: 100px
+  text-align: center
+  font-size: 13px
+
+.detail__comment
+  width: 55px
+  min-width: 55px
+
+.detail__comment__icon
+  height: 16px
+  width: 18px
+  background: url("../../../assets/buyer_orders_table_comment.svg") no-repeat center center
+  position: relative
+  cursor: default
+  &.active
+    cursor: pointer
+    background: url("../../../assets/buyer_orders_table_comment__fill.svg") no-repeat center center
+
+.footer
+  background: #fafafa
+  display: flex
+  align-items: center
+  padding: 0 55px 0 30px
+  box-sizing: border-box
+  color: #81888e
+  font-size: 13px
+  font-weight: 300
+  text-align: center
+  height: 42px
+
+.footer__delivery,
+.footer__days
+  width: 50%
+
+.footer__price
+  width: 100px
+  min-width: 100px
+
+
+.summary
+  margin-top: 15px
+  box-sizing: border-box
+  height: 42px
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: flex-end
+
+.tools
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: flex-start
+  height: 35px
+  margin-bottom: 10px
+
+.notes,
+.unmark,
+.markall
+  font-size: 13px
+  color: #2e71f0
+  border-bottom: 1px dotted #2e71f0
+  cursor: pointer
+  text-align: left
+
+.notes.disabled
+  color: #bbb
+  border-bottom: none
+  cursor: default
+
+.sum
+  background: #eaeaea
+  width: 130px
+  width: 130px
+  min-width: 130px
+  height: 100%
+  margin-left: 15px
+  display: flex
+  align-items: center
+  justify-content: center
+  border-radius: 3px
+  margin-bottom: 10px
+
+.sum__title
+  color: #767677
+  font-size: 13px
+  font-weight: bold
+  margin-right: 10px
+
+.sum__value
+  color: #26282f
+  font-size: 13px
+  font-weight: bold
+
+.buy
+  width: 105px
+  min-width: 105px
+  height: 42px
+  margin-left: 15px
+  margin-bottom: 10px
+  line-height: 42px
+  text-align: center
+  background: #2e71f0
+  box-sizing: border-box
+  border-bottom: 3px solid #2863d1
+  font-size: 11px
+  color: #fff
+  text-transform: uppercase
+  border-radius: 3px
+  font-weight: bold
+  cursor: pointer
+
+  &.disabled
+    background: #eaeaea
+    color: #ababab
+    border-bottom-color: #cecece
+    cursor: not-allowed
+
+.description
+  color: #969696
+  font-size: 12px
+  text-decoration: underline
+  text-align: right
+  margin-top: 15px
+
+.table
+  display: flex
+  justify-content: space-between
+
+.table__content
+  width: 100%
+
+.scroll > .wrapper
+  margin-left: 10px
+
+.container
+  // height: 100vh
+
+.container__overflow
+  width: 100%
+  overflow: hidden
+
+.container__scrollable
+  overflow-y: scroll
+  width: calc(100% + 20px)
+  max-height: calc(100vh - 385px)

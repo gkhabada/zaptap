@@ -1,0 +1,118 @@
+@import "../../assets/mixins.sass"
+
+.line
+  height: 42px
+  display: flex
+  align-items: center
+  margin-bottom: 16px
+
+  @media screen and (max-width: 700px)
+    height: auto
+
+.line__id
+  width: 22px
+  min-width: 22px
+  font-size: 14px
+  color: #444
+  font-weight: 700
+  font-family: 'Roboto', sans-serif
+  padding-top: 10px
+  align-self: flex-start
+
+.inputs
+  width: 100%
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  @media screen and (max-width: 700px)
+    flex-direction: column
+
+.input__original
+  width: 100%
+  height: 100%
+  border: none
+  border: 1px solid #bbb
+  outline: none
+  background: none
+  padding: 0 16px
+  color: #444
+  box-sizing: border-box
+  font-size: 14px
+
+  @include placeholder
+    color: #777
+
+.line__name
+  width: 29.84%
+  height: 42px
+  position: relative
+
+  @media screen and (max-width: 700px)
+    margin: 0 16px
+    margin-bottom: 8px
+    width: 100%
+
+.line__comment
+  width: 42.07%
+  height: 42px
+  margin: 0 16px
+
+  @media screen and (max-width: 700px)
+    margin-bottom: 8px
+    width: 100%
+
+.line__original
+  width: 25.91%
+  font-size: 13px
+  color: #444
+  height: 42px
+  outline: none
+  background: #fff
+  box-sizing: border-box
+  border-radius: 3px
+
+  @media screen and (max-width: 700px)
+    width: 100%
+
+  @include placeholder
+    color: #b7b7b7
+
+.parterror
+  .line__name:not(.picked) > .container
+    border: 1px solid red
+    box-sizing: border-box
+  // .line__comment:not(.comment) > .container,
+  // .line__original:not(.original)
+
+.line__upload
+  width: 170px
+  min-width: 170px
+  text-align: center
+
+  @media screen and (max-width: 900px)
+    width: 150px
+    min-width: 0
+
+
+.upload__link
+  color: #2e71f0
+  font-size: 12px
+  font-family: 'Roboto', sans-serif
+  padding-left: 28px
+  height: 17px
+  line-height: 17px
+  display: inline-block
+  text-decoration: underline
+  background: url("../../assets/clipphoto.svg") no-repeat left top
+  cursor: pointer
+
+  @media screen and (max-width: 900px)
+    padding-right: 20px
+
+.container__scrollable
+  padding: 0 30px
+  box-sizing: border-box
+
+.inviz
+  opacity: 0

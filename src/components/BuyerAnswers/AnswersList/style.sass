@@ -1,0 +1,225 @@
+.answerslist
+  width: 100%
+  position: relative
+
+.answersempty
+  position: relative
+  height: 100%
+  // max-height: 60px
+  width: 100%
+  text-align: center
+
+.notEmptyCart
+  color: #0073f4
+  display: flex
+  justify-content: center
+  align-items: center
+  // max-width: 200px
+  margin: 20px 0
+  // text-decoration: underline
+  font-size: 14px
+  cursor: pointer
+
+.emptymessage
+  text-align: center
+  color: #444
+  font-size: 13px
+
+.container
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: space-between
+  height: calc(100vh - 130px)
+
+.container__overflow
+  overflow: hidden
+  width: 100%
+
+.container__scrollable
+  width: calc(100% + 20px)
+  height: calc(100vh - 130px)
+  overflow-y: scroll
+
+.detail__container
+  width: 100%
+  background: #f6f6f6
+  position: relative
+  &:nth-child(2n)
+    background: #fff
+
+  &.active
+    background: #ededed
+    &::after
+      content: ''
+      display: block
+      width: 3px
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      background: #0073f4
+
+.detail
+  // width: calc(100% - 20px)
+  height: 60px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  position: relative
+  padding-left: 12px
+  box-sizing: border-box
+  cursor: pointer
+
+
+.info
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  height: 35px
+  max-width: 180px
+
+.info__main,
+.info__second
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.info__name
+  color: #2f72f0
+  font-size: 14px
+  font-weight: bold
+  white-space: nowrap
+  margin-right: 5px
+  &:hover
+    text-decoration: underline
+
+.info__city
+  color: #81888e
+  font-weight: 300
+  font-size: 12px
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.reviews
+  display: flex
+
+.reviews__title
+  color: #81888e
+  font-weight: 300
+  font-size: 12px
+  margin-right: 5px
+
+.reviews__plus
+  color: #57bb63
+  font-weight: 300
+  font-size: 12px
+  margin-right: 5px
+
+.reviews__minus
+  color: #f02e60
+  font-weight: 300
+  font-size: 12px
+
+.whois
+  display: flex
+
+.whois__criminal
+  width: 11px
+  height: 12px
+  background: url("../../../assets/criminal.png") no-repeat center center
+
+.whois__positive
+  width: 11px
+  height: 12px
+  background: url("../../../assets/header__thumbup.svg") no-repeat center center
+  margin-left: 5px
+
+.whois__negative
+  width: 11px
+  height: 12px
+  background: url("../../../assets/thumbdown.svg") no-repeat center center
+  margin-left: 5px
+
+.whois__favourite
+  width: 14px
+  height: 13px
+  background: url("../../../assets/user_favourite.svg") no-repeat center center
+  margin-left: 5px
+
+.whois__notfavourite
+  width: 14px
+  height: 13px
+  background: url("../../../assets/user_favourite_not.svg") no-repeat center center
+  margin-left: 5px
+
+.counters
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: flex-end
+  height: 35px
+  margin-left: 10px
+  margin-right: 25px
+
+.cheap,
+.expensive
+  color: #81888e
+  font-weight: 300
+  font-size: 12px
+  white-space: nowrap
+
+.remove
+  width: 9px
+  min-width: 9px
+  height: 9px
+  min-height: 9px
+  position: absolute
+  top: 7px
+  right: 9px
+  background: url("../../../assets/removedetail.svg") no-repeat center center
+  cursor: pointer
+
+.scroll > .wrapper
+  margin-left: 10px
+
+.loading
+  background: url("../../../assets/loading.svg") no-repeat center center
+  width: 50px
+  margin: 20px auto 0
+  height: 50px
+
+.avatar
+  width: 35px
+  height: 35px
+  border-radius: 20px
+  margin-right: 10px
+  background-color: #555
+  overflow: hidden
+  position: relative
+
+  .image
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center center
+    
+  .preview
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    color: #fff
+    line-height: 35px
+    text-align: center
+    font-weight: bold
+
+
+.detail__left
+  display: flex

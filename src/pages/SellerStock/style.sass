@@ -1,0 +1,129 @@
+.stock
+  font-family: 'Roboto', sans-serif
+  padding: 0 20px
+  width: 100%
+  box-sizing: border-box
+  position: relative
+
+.information
+  text-align: center
+  position: absolute
+  display: none
+  justify-content: center
+  align-items: center
+  top: 50px
+  left: 0px
+  width: 100%
+  height: calc(100% - 50px)
+  background: rgba(255,255,255,0.8)
+  z-index: 1
+
+  .information__text
+    max-width: 400px
+    color: #555555
+    font-weight: bold
+
+.stock.stopped > .information
+  display: flex
+
+
+.header
+  height: 46px
+  display: flex
+  align-items: center
+  border-bottom: 1px solid #e5eef8
+  box-sizing: border-box
+  justify-content: space-between
+
+.header__left,
+.header__right
+  display: flex
+  align-items: center
+
+.stop
+  color: #444343
+  font-size: 14px
+  margin-left: 13px
+
+.brand
+  display: flex
+  align-items: center
+  margin-bottom: 6px
+
+.title
+  margin-left: 10px
+  width: 100%
+  cursor: pointer
+  display: flex
+  align-items: center
+
+  &::after
+    content: ''
+    display: block
+    width: 13px
+    min-width: 13px
+    height: 13px
+    background: url('../../assets/plus_in_circle.svg') no-repeat center center
+    border: 1px solid #bbb
+    background-position-y: 1px
+    border-radius: 50%
+    box-sizing: border-box
+
+.title__text
+  font-size: 14px
+  color: #444343
+  white-space: nowrap
+
+.title__line
+  height: 1px
+  width: 100%
+  margin: 0 6px
+  background: #bbb
+
+.container__scrollable
+  display: flex
+  justify-content: space-between
+
+.row
+  width: 25%
+  padding-right: 50px
+  box-sizing: border-box
+
+.container
+  padding-top: 32px
+  width: 100%
+  display: flex
+  height: calc(100vh - 120px)
+
+.container__overflow
+  width: 100%
+  overflow: hidden
+
+.container__scrollable
+  width: calc(100% + 20px)
+  overflow-y: scroll
+  height: 100%
+
+.scroll
+  height: 100%
+  width: 12px
+
+.hint
+  display: flex
+  line-height: 14px
+  font-size: 14px
+  color: #555
+  align-items: center
+
+.hint-title
+  // font-weight: bold
+  margin: 0 5px
+
+.check__all
+  font-size: 14px
+  color: #222
+  margin-right: 10px
+  font-weight: bold
+
+.checkbox_demo
+  cursor: default !important

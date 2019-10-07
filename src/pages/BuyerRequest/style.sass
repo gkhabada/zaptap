@@ -1,0 +1,404 @@
+@import "../../assets/mixins.sass"
+
+.wrapper
+  height: 100%
+  padding-bottom: 42px
+  box-sizing: border-box
+  // display: flex
+  // flex-direction: column
+  // justify-content: space-between
+  display: block
+  font-family: 'Roboto', sans-serif
+
+  @media screen and (max-width: 900px)
+    overflow: scroll
+
+.options
+  height: 175px
+  min-height: 175px
+  width: 100%
+  background: #fff
+  position: relative
+  padding: 20px 0 0 20px
+  box-sizing: border-box
+  display: flex
+  flex-direction:  column
+
+  @media screen and (max-width: 900px)
+    height: auto
+    margin-bottom: 10px
+    padding: 0
+    padding-top: 20px
+    padding-left: 0.5%
+  @media screen and (max-width: 700px)
+    padding: 20px 0 0 20px
+
+.options-row
+  display: flex
+  flex-direction: row
+  height: 41px
+  margin-bottom: 5px
+
+  @media screen and (max-width: 900px)
+    flex-direction: column
+    height: auto
+    margin-bottom: 0
+
+.twice-row
+  display: flex
+  flex-direction: row
+  height: 41px
+  width: 100%
+  margin-bottom: 3px
+
+  @media screen and (max-width: 700px)
+    flex-direction: column
+    height: auto
+    margin-bottom: 0
+
+.once-row
+  width: 50%
+
+  @media screen and (max-width: 900px)
+    width: 100.5%
+
+  @media screen and (max-width: 700px)
+    width: 100%
+
+.title
+  font-family: 'Fira Sans', sans-serif
+  color: #2a313d
+  font-size: 18px
+  line-height: 18px
+  position: relative
+
+  @media screen and (max-width: 900px)
+    padding-left: 20px
+  @media screen and (max-width: 700px)
+    padding: 0
+
+
+.options__container
+  position: relative
+  margin-top: 16px
+
+.dropdown
+  width: 100%
+
+  &[class$="top"]
+    z-index: 2
+    top: 0px
+  &[class$="bottom"]
+    top: 55px
+    z-index: 1
+  &[class*="--0--"],
+  &[class*="--6--"]
+    left: 0%
+  &[class*="--1--"],
+  &[class*="--7--"]
+    left: 16.66%
+  &[class*="--2--"],
+  &[class*="--8--"]
+    left: 33.32%
+  &[class*="--3--"],
+  &[class*="--9--"]
+    left: 50%
+  &[class*="--4--"],
+  &[class*="--10--"]
+    left: 66.66%
+  &[class*="--5--"],
+  &[class*="--11--"]
+    left: 83.32%
+  &.opened
+    z-index: 3
+
+  @media screen and (max-width: 900px)
+    width: 100%
+    margin-bottom: 3px
+
+.parts
+  //height: 100%
+  background: #F6F6F6
+  padding-left: 20px
+  padding-top: 23px
+  box-sizing: border-box
+  // overflow: hidden
+  position: relative
+
+.parts__container
+  margin-top: 5px
+  display: flex
+
+.footer
+  height: 120px
+  min-height: 120px
+  width: 100%
+  padding-left: 20px
+  padding-right: 20px
+  padding-top: 21px
+  box-sizing: border-box
+
+.footer__container
+  display: flex
+  justify-content: space-between
+
+.footer__input
+  height: 42px
+  width: 100%
+  padding-right: 16px
+  position: relative
+
+.footer__button
+  height: 42px
+  width: 167px
+  min-width: 167px
+  line-height: 42px
+  text-align: center
+  background: #2e71f0
+  border-bottom: 3px solid #2863d1
+  color: #fff
+  font-size: 11px
+  text-transform: uppercase
+  border-radius: 3px
+  box-sizing: border-box
+  cursor: pointer
+
+  &.disabled
+    background: #cecece
+    border-color: #afafaf
+    color: #818181
+    cursor: not-allowed
+
+.last__line
+  margin-left: 22px
+  display: flex
+  align-items: center
+  margin-bottom: 16px
+
+  @media screen and (max-width: 900px)
+    flex-direction: column
+    margin-right: 5%
+  
+
+.visible
+  display: flex
+  align-items: center
+  width: 100%
+  justify-content: space-between
+  
+  @media screen and (max-width: 900px)
+    flex-direction: column
+
+.add__part
+  margin-top: 8px
+  font-size: 13px
+  color: #2e71f0
+  font-weight: 500
+  text-decoration: underline
+  padding-left: 18px
+  box-sizing: border-box
+  height: 13px
+  line-height: 13px
+  background: url("../../assets/addpart.svg") no-repeat 0 center
+  width: 29.84%
+
+  @media screen and (max-width: 900px)
+    width: auto
+    margin-bottom: 15px
+  span
+    cursor: pointer
+
+.add__part__fix
+  width: 29.84%
+
+.vin__frame
+  width: 42.07%
+  height: 42px
+  margin: 0 16px
+  position: relative
+
+  @media screen and (max-width: 900px)
+    width: 95%
+    margin-bottom: 15px
+
+.phone
+  width: 25.91%
+  height: 42px
+
+  @media screen and (max-width: 900px)
+    width: 95%
+
+.phone__label
+  height: 100%
+  border-bottom: 1px solid #aaa
+  box-sizing: border-box
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding-right: 9px
+
+
+.phone__input
+  height: 42px
+  width: 100%
+  border: none
+  outline: none
+  background: none
+  padding-right: 16px
+  box-sizing: border-box
+  color: #444
+  font-family: 'Roboto', sans-serif
+
+  input
+    @include placeholder
+      color: #777
+      font-family: 'Roboto', sans-serif
+
+
+.question
+  width: 7px
+  height: 11px
+  position: relative
+
+.question__mark
+  font-size: 16px
+  color: #2e71f0
+  cursor: pointer
+
+.question__message
+  color: #2a313d
+  font-size: 12px
+  width: 200px
+  background: #fff
+  border-radius: 3px
+  box-shadow: 0 3px 20px rgba(0,0,0,0.15)
+  position: absolute
+  right: -95px
+  top: -60px
+  box-shadow: border-box
+  padding: 11px 13px
+  display: none
+
+.question.active,
+.question:hover
+  .question__message
+    display: block
+
+
+.empty
+  width: 170px
+  min-width: 170px
+  justify-content: space-between
+
+.container__scrollable
+  overflow-y: scroll
+  height: 100%
+  width: calc(100% + 20px)
+  box-sizing: border-box
+  padding-top: 10px
+
+.container__overflow
+  height: 100%
+  width: 100%
+  overflow: hidden
+
+.scroll
+  width: 18px
+
+.parts__container
+  // height: 100%
+  padding: 0
+
+.error
+  border: 1px solid #dcdcdc
+  box-shadow: 0 3px 20px rgba(0,0,0,0.15)
+  width: 228px
+  height: 57px
+  box-sizing: border-box
+  justify-content: center
+  align-items: center
+  display: flex
+  border-radius: 5px
+  position: absolute
+  top: 0
+  left: 0
+  background: #fff
+  z-index: 3
+
+.error__message
+  color: #2a313d
+  font-size: 12px
+  width: 200px
+
+.endpopup
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background: rgba(0,0,0,0.7)
+  z-index: 10
+  display: flex
+  justify-content: center
+  align-items: center
+
+.endpopup__container
+  width: 445px
+  height: 135px
+  background: #fff
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+
+.endpopup__close
+  width: 23px
+  height: 23px
+  position: absolute
+  top: 0
+  right: 0
+  cursor: pointer
+  background: #2e71f0 url("../../assets/close-popup.svg") no-repeat center center
+
+.endpopup__message
+  width: 350px
+  text-align: center
+  font-size: 14px
+  color: #555
+  // font-weight: bold
+
+  a
+    color: #2e71f0
+    margin-left: 5px
+
+.footer__button__loading
+  background: url("../../assets/loading.svg") no-repeat center center
+  width: 50px
+  margin: 0 auto
+  height: 42px
+
+.endpopup__check
+  display: flex
+  align-items: center
+  justify-content: center
+  margin-top: 20px
+  cursor: pointer
+
+.endpopup__check__text
+  margin-left: 10px
+
+.widget-btn
+  display: block
+  position: absolute
+  top: 0
+  right: 15px
+  font-size: 12px
+  padding: 2px 5px
+  border: 1px solid red
+  border-radius: 5px
+  color: red
+  cursor: pointer
+
+@media all and (max-width: 1090px)
+  .question__message
+    right: -20px

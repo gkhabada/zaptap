@@ -1,0 +1,138 @@
+.popup
+  display: flex
+  justify-content: center
+  align-items: center
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0,0,0,0.3)
+
+.popup__content
+  background: #fff
+  width: 500px
+  margin: 30px
+  position: relative
+  padding-top: 30px
+  padding-left: 40px
+
+.close
+  width: 23px
+  height: 23px
+  background: url('../../assets/close-popup.svg') no-repeat center center
+  position: absolute
+  top: 0
+  right: 0
+
+.brand
+  color: #444343
+  font-weight: bold
+  font-size: 16px
+  height: 20px
+  display: flex
+  align-items: center
+
+.brand__checkbox
+  margin-right: 10px
+
+.container
+  padding-top: 20px
+  padding-bottom: 20px
+  display: flex
+  justify-content: space-between
+
+.container__overflow
+  overflow: hidden
+  height: 100%
+
+.container__scrollable
+  overflow-y: scroll
+  width: calc(100% + 20px)
+  max-height: calc(100vh - 90px)
+
+.scroll
+  width: 20px
+
+.item__title
+  display: flex
+  align-items: center
+  font-size: 14px
+  color: #444343
+  margin-bottom: 5px
+  width: 295px
+  padding-right: 36px
+  position: relative
+
+  &.opened::after
+    content: ''
+    display: block
+    position: absolute
+    right: 0
+    top: 50%
+    width: 36px
+    height: 11px
+    background: url("../../assets/stock_popup_parent.png") no-repeat right top
+    filter: contrast(0.4)
+
+  &.generations
+    width: 318px
+
+  &.units
+    width: 341px
+    &.opened::after
+      display: none
+
+  &.details
+    width: 100%
+
+.title__text
+  margin-left: 11px
+  cursor: pointer
+  white-space: nowrap
+  text-overflow: ellipsis
+  // overflow: hidden
+  justify-self: flex-start
+  // width: 100%
+  max-width: 280px
+
+  &.details
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
+
+.title__line
+  background: #bbb
+  width: 100%
+  height: 1px
+  margin: 6px
+
+.title__status
+  cursor: pointer
+  width: 13px
+  min-width: 13px
+  margin-right: 5px
+  height: 13px
+  background: url("../../assets/plus_in_circle.svg") no-repeat center 1px
+  border-radius: 50%
+  box-sizing: border-box
+  border: 1px solid #bbb
+
+  &.opened
+    background: url("../../assets/minus_in_circle.svg") no-repeat center 1px
+
+
+.item__body
+  margin-left: 24px
+  overflow: hidden
+  height: 0px
+  transition: height 0.2s
+
+.popup-enter-active
+  transition: opacity 0.2s
+
+.popup-enter
+  opacity: 0
+
+.popup-enter-to
+  opacity: 1

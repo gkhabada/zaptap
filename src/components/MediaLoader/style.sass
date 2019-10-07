@@ -1,0 +1,249 @@
+.medialoader
+  position: fixed
+  width: 100vw
+  height: 100vh
+  top: 0
+  left: 0
+  background: rgba(0,0,0,0.7)
+  z-index: 4
+  display: flex
+  justify-content: center
+  align-items: center
+
+.container
+  width: 100%;
+  max-width: 825px;
+  height: 525px
+  max-height: 100vh
+  background: #fff
+  position: relative
+
+.close
+  width: 23px
+  height: 23px
+  background: url("../../assets/close-popup.svg") no-repeat center center
+  position: absolute
+  top: 0
+  right: 0
+  cursor: pointer
+  z-index: 1
+
+.disklaimer
+  display: flex
+  align-items: center
+  padding-left: 25px
+  margin-top: 40px
+
+.disklaimer__icon
+  width: 47px
+  height: 47px
+  background: url("../../assets/loaderplaceholder.svg") no-repeat center center
+  margin-right: 30px
+
+.disklaimer__text
+  width: 530px
+  color: #b6b6b6
+  font-size: 14px
+  line-height: 16px
+
+.placeholder
+  background: #f5f5f5
+  border: 2px solid #e8e8e8
+  box-sizing: border-box
+  max-width: 770px
+  width: 100%;
+  height: 318px
+  max-height: calc(100vh - 207px)
+  margin: 20px auto 0
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+  transition: box-shadow 0.3s
+  box-shadow: inset 0 0 0px 0px rgba(0,0,0,0)
+
+.placeholder__text
+  color: #555
+  font-size: 14px
+
+  u
+    color: #2e71f0
+    margin-left: 5px
+
+.preview
+  position: relative
+  height: 425px
+  max-height: calc(100vh - 100px)
+  width: 100%
+  background: #eee
+
+.preview__prev
+  width: 51px
+  height: calc(100% - 36px)
+  background: url("../../assets/sliderprev.svg") no-repeat center center
+  position: absolute
+  top: 0
+  left: 0
+  cursor: pointer
+
+  &:hover
+    background-color: rgba(0,0,0,0.1)
+
+.preview__next
+  width: 51px
+  height: calc(100% - 36px)
+  background: url("../../assets/slidernext.svg") no-repeat center center
+  position: absolute
+  top: 0
+  right: 0
+  cursor: pointer
+
+  &:hover
+    background-color: rgba(0,0,0,0.1)
+
+.preview__image
+  width: 100%
+  height: 100%
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+
+.preview__tools
+  position: absolute
+  bottom: 0
+  left: 0
+  height: 36px
+  width: 100%
+  background: rgba(0,0,0,0.5)
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.remove
+  margin-left: 20px
+  cursor: pointer
+  width: 16px
+  height: 16px
+  background: url("../../assets/sliderremove.svg") no-repeat center center
+
+.toggleview
+  margin-right: 20px
+  cursor: pointer
+  width: 16px
+  height: 16px
+  background: url("../../assets/image_mode_auto.svg") no-repeat center center
+  &.contain
+    background-image: url("../../assets/image_mode_contain.svg")
+
+.footer
+  height: 100px
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100%
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  box-sizing: border-box
+  background: #fff
+
+.slider
+  display: flex
+
+.prev
+  width: 36px
+  height: 55px
+  cursor: pointer
+  background: url("../../assets/collectionprev.svg") no-repeat center center
+  &.hidden
+    opacity: 0
+    cursor: default
+
+.next
+  width: 36px
+  height: 55px
+  cursor: pointer
+  background: url("../../assets/collectionnext.svg") no-repeat center center
+  &.hidden
+    opacity: 0
+    cursor: default
+
+.collection
+  width: 540px
+  height: 55px
+  overflow: hidden
+
+.movingblock
+  display: flex
+  width: 540px
+  transition: transform 0.2s
+  transform: translateX(0px)
+
+.item
+  width: 55px
+  min-width: 55px
+  height: 55px
+  margin-right: 5px
+  background-color: #eee
+  background-size: cover
+  position: relative
+  overflow: hidden
+  cursor: pointer
+  &::after
+    content: ''
+    display: block
+    transition: transform 0.2s
+    position: absolute
+    background: #2e71f0
+    height: 4px
+    width: 100%
+    left: 0
+    bottom: -4px
+
+  // &:hover
+  &.active
+    &::after
+      transform: translateY(-4px)
+
+.addmore
+  width: 55px
+  height: 55px
+  background: #f3f3f4 url("../../assets/sliderplus.svg") no-repeat center center
+  border-radius: 3px
+  cursor: pointer
+
+.tools
+  display: flex
+  align-items: center
+  justify-content: flex-end
+
+.button
+  width: 120px
+  height: 42px
+  line-height: 42px
+  font-size: 11px
+  text-align: center
+  border-bottom: 3px solid #2863d1
+  color: #fff
+  background: #2e71f0
+  text-transform: uppercase
+  border-radius: 3px
+  margin-right: 15px
+  margin-left: 15px
+  cursor: pointer
+
+  &.full
+    margin-right: 25px
+    width: 140px
+
+.limit
+  color: #b7b7b7
+  font-size: 14px
+
+.dragover
+  box-shadow: inset 0 0 100px 10px rgba(0,0,0,0.2)
+
+@media all and (max-width: 1020px)
+  .container
+    max-width: 90vw
+    margin-right: 12px
