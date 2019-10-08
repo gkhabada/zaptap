@@ -1,6 +1,7 @@
 export class Tabs {
     constructor() {
-        this.links = document.querySelectorAll('.modal_tabs_button');
+        // this.links = document.querySelectorAll('.modal_tabs_button');
+        this.links = [];
         this.tabs = document.querySelectorAll('.modal_tabs_content_item');
         this.init();
     }

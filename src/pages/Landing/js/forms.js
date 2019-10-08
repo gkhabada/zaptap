@@ -138,7 +138,7 @@ export class Forms {
     }
     submit(elem) {
         this.elem = elem;
-        this.pending(1);
+        // this.pending(1);
         let formData = this.serialize();
         if (formData.hasOwnProperty('email'))
             this.recover_email = formData['email'];
@@ -146,7 +146,7 @@ export class Forms {
         // console.log(errors);
         if (errors.length > 0) {
             this.handleErrors(errors);
-            this.pending(0);
+            // this.pending(0);
             return;
         }
         const dev = process.env.PROD_ENV === "development";
@@ -248,7 +248,7 @@ export class Forms {
                 .then(this.success)
                 .catch(this.error);
         }
-        this.pending(0);
+        // this.pending(0);
     }
     handleErrors(errors) {
         let errorSection = this.elem.querySelector('.error-section');
@@ -266,7 +266,7 @@ export class Forms {
         this.elem.append(errorDiv);
     }
     login(data) {
-        // console.log(data);
+        console.log(data);
         const { refresh_token, expires_in, token: tokenData } = data;
         let domain = '.zaptap.ru';
         if (location.href.indexOf('dev') !== -1 || location.href.indexOf('localhost') !== -1) {
@@ -286,7 +286,9 @@ export class Forms {
         //     type: 'addRequest',
         //     user_id: data.user.user_id
         // }, '*');
-        window.location.href = '//lk' + domain;
+
+        // перенаправление в админку
+        // window.location.href = '//lk' + domain;
     }
     setCookie(name, value, options) {
         options = options || {};

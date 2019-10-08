@@ -1,4 +1,7 @@
 import Agreement from '../Agreement.vue'
+import Auth from '../../components/Auth.vue';
+
+import { user, login, register, redirectIfUnauthorized, isLocalhost } from "../../helpers/authorization";
 
 import { Forms } from "./js/forms";
 import { Headerbtns } from "./js/headerbtns";
@@ -10,10 +13,13 @@ import { Mask } from './js/mask';
 export default {
   name: 'Landing',
   components: {
-    Agreement
+    Agreement,
+    Auth
   },
   data () {
     return {
+      auth: false,
+      serverr: false,
       agreement: false
     }
   },
@@ -116,5 +122,31 @@ export default {
           d.addEventListener("DOMContentLoaded", f, false);
         } else { f(); }
       })(document, window, "yandex_metrika_callbacks2");
+  },
+  methods: {
+    // toggleform() {
+    //   if (this.formtype === "login") {
+    //     this.formtype = "register";
+    //   } else {
+    //     this.formtype = "login";
+    //   }
+    // },
+    async login({ email, password }) {
+      this.pending = true;
+      this.serverr = false;
+      await login({ email, password }).catch(err => {
+        this.serverr = true;
+      });
+      this.pending = false;
+    },
+    async register(...args) {
+      this.pending = true;
+      this.serverr = false;
+      await register(args).catch(err => {
+        this.serverr = true;
+      });
+      if (!this.serverr) this.isRegistered = true;
+      this.pending = false;
+    },
   }
 };

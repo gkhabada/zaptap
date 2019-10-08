@@ -43,7 +43,7 @@ export default {
   data: () => ({
     ContentStore,
     buyerLinks: [
-      { name: "Запрос", url: "/", counter: 0 },
+      { name: "Запрос", url: "/buyer/request", counter: 0 },
       { name: "Ответы", url: "/buyer/answers", counter: 0 },
       { name: "Заказы", url: "/buyer/orders", counter: 0 }
     ],
