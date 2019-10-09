@@ -100,7 +100,7 @@
         <p class="remember_title">Вам отправлен Email.</p>
         <p class="remember_subtext">Для входа в аккаунт необходимо перейти по ссылке в письме</p>
         <p id="recover_email" class="recover_text"></p>
-        <button class="form_button recover_button popup_close" type="button">OK</button>
+        <button class="form_button recover_button" @click="closePopup()" type="button">OK</button>
       </div>
     </div>
 

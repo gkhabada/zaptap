@@ -1,5 +1,5 @@
-import Axios from "axios";
-import {post} from '../api/request';
+import Axios from 'axios';
+import { post } from '../api/request';
 import Cookies from 'js-cookie';
 
 export const user = {
@@ -12,7 +12,7 @@ export const user = {
   rolesLoaded: false,
 };
 
-export const dev = process.env.PROD_ENV === "development";
+export const dev = process.env.PROD_ENV === 'development';
 
 export const isLocalhost = location.href.indexOf('localhost') !== -1;
 
@@ -20,7 +20,7 @@ export const redirectIfUnauthorized = () => {
   const isAuthorized = !!user.token;
   console.log(user.token);
   console.log(isAuthorized);
-  if(!isAuthorized && !isLocalhost) {
+  if (!isAuthorized && !isLocalhost) {
     return 'redirect';
     // let dev = (location.href.indexOf('dev') !== -1) ? 'dev.' : '';
     // location.href = '//' + dev + 'zaptap.ru';
@@ -29,65 +29,65 @@ export const redirectIfUnauthorized = () => {
 
 const instance = token => {
   return Axios.create({
-    baseURL: `https://api.${dev ? "dev." : ""}zaptap.ru/`,
+    baseURL: `https://api.${dev ? 'dev.' : ''}zaptap.ru/`,
     headers: {
-      "x-zaptap-api-token": "Bearer " + token,
-      "Content-Type": "application/json"
+      'x-zaptap-api-token': 'Bearer ' + token,
+      'Content-Type': 'application/json'
     },
-    responseType: "json"
+    responseType: 'json'
   });
 };
 
 const storage = {
-  getItem(name) {
+  getItem (name) {
     return Cookies.get(name);
   },
-  setItem(name, value) {
+  setItem (name, value) {
     // фикс для работы на локалхосте
     let localhost = location.href.indexOf('localhost') !== -1;
-    let domain = localhost ? '' : `.${process.env.PROD_ENV === "development" ? "dev." : ""}zaptap.ru`;
+    let domain = localhost ? '' : `.${process.env.PROD_ENV === 'development' ? 'dev.' : ''}zaptap.ru`;
 
-    Cookies.set(name, value, {expires: 31, path: '', domain: domain });
+    Cookies.set(name, value, { expires: 31, path: '', domain: domain });
   },
-  removeItem(name) {
+  removeItem (name) {
     this.setItem(name, '');
   },
 };
 
-const init = function() {
-  user.token = storage.getItem("Authorization") || null;
-  user.refresh = storage.getItem("refresh") || null;
-  user.expires_in = +storage.getItem("expires_in") || null;
-  user.is_buyer = localStorage.getItem("is_buyer") === 'true';
-  user.is_seller = localStorage.getItem("is_seller") === 'true';
-  user.rolesLoaded = localStorage.getItem("rolesLoaded") === 'true';
+const init = function () {
+  user.token = storage.getItem('Authorization') || null;
+  user.refresh = storage.getItem('refresh') || null;
+  user.expires_in = +storage.getItem('expires_in') || null;
+  user.is_buyer = localStorage.getItem('is_buyer') === 'true';
+  user.is_seller = localStorage.getItem('is_seller') === 'true';
+  user.rolesLoaded = localStorage.getItem('rolesLoaded') === 'true';
 };
 
-function setToken(t) {
+function setToken (t) {
   const { token, refresh, expires_in } = t || {};
   if (token) {
     user.token = token;
     user.refresh = refresh;
     user.expires_in = expires_in;
-    storage.setItem("Authorization", token);
-    storage.setItem("refresh", refresh);
-    storage.setItem("expires_in", expires_in);
+    storage.setItem('Authorization', token);
+    storage.setItem('refresh', refresh);
+    storage.setItem('expires_in', expires_in);
   } else {
     user.token = null;
     user.refresh = null;
     user.expires_in = null;
     user.data = null;
-    storage.removeItem("Authorization");
-    storage.removeItem("refresh");
-    storage.removeItem("expires_in");
+    storage.removeItem('Authorization');
+    storage.removeItem('refresh');
+    storage.removeItem('expires_in');
   }
 }
 
-export async function updateToken() {
+export async function updateToken () {
   return await login({ token: user.token });
 }
 
-function processUserData(data) {
+function processUserData (data) {
 
   const { user: userData, refresh_token, expires_in, token: tokenData } = data;
   user.data = userData;
@@ -99,12 +99,26 @@ function processUserData(data) {
   });
 }
 
-export async function register(credentials) {
-  const { email, password } = credentials || {};
+export async function register (credentials) {
+  console.log(credentials);
+
+  const dev = process.env.PROD_ENV === 'development';
+  let host = `https://api.${dev ? 'dev.' : ''}zaptap.ru`;
+
   const req = instance(user.token);
-  if (email && password) {
+  if (!!body) {
     const { err } = await req
-      .post("/user/register", { email, password })
+      .post(host + '/user/register', {
+        name: credentials.name,
+        password: credentials.password,
+        email: credentials.email,
+        phones: credentials.phones,
+        locality: credentials.locality,
+        roles: {
+          is_buyer: (credentials.roles === 'roleBuyer' || credentials.roles === 'roleBoth'),
+          is_seller: (credentials.roles === 'roleSeller' || credentials.roles === 'roleBoth'),
+        }
+      })
       .then(() => ({ err: null }))
       .catch(err => ({ err }));
     if (err) throw err;
@@ -114,27 +128,27 @@ export async function register(credentials) {
   }
 }
 
-export async function userRoles() {
-  let { data } = await post("/user/get-roles")
+export async function userRoles () {
+  let { data } = await post('/user/get-roles')
     .catch(err => ({ data: null }));
 
-  if(data) {
+  if (data) {
     user.is_buyer = data.is_buyer;
     user.is_seller = data.is_seller;
     user.rolesLoaded = true;
 
-    localStorage.setItem("is_buyer", data.is_buyer);
-    localStorage.setItem("is_seller", data.is_seller);
-    localStorage.setItem("rolesLoaded", 'true');
+    localStorage.setItem('is_buyer', data.is_buyer);
+    localStorage.setItem('is_seller', data.is_seller);
+    localStorage.setItem('rolesLoaded', 'true');
   }
 }
 
-export async function login(credentials, customToken) {
+export async function login (credentials, customToken) {
   const { email, password } = credentials || {};
   const req = instance(customToken || user.token);
   if (email && password) {
     const { data } = await req
-      .post("/user/auth-email", { email, password })
+      .post('/user/auth-email', { email, password })
       .catch(err => ({ data: null }));
     if (!data) {
       logout();
@@ -147,7 +161,7 @@ export async function login(credentials, customToken) {
     return data.user;
   } else if (credentials.refresh && (customToken || user.token)) {
     const { data } = await req
-      .post("/user/auth-token", {
+      .post('/user/auth-token', {
         refresh_token: credentials.refresh
       })
       .catch(err => {
@@ -165,7 +179,7 @@ export async function login(credentials, customToken) {
   }
 }
 
-export async function logout() {
+export async function logout () {
   setToken(null);
   storage.removeItem('Authorization');
   storage.removeItem('refresh');
